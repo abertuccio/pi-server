@@ -33,7 +33,7 @@ def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
         # GPIO.output(VERIFICACION, GPIO.LOW)
         # GPIO.output(TODO_CERRADO, GPIO.LOW)
 
-        print("llegamos hasta aca")
+        GPIO.output(VERIFICACION, GPIO.HIGH)
         
         if verificacion:
             GPIO.output(VERIFICACION, GPIO.HIGH)
@@ -54,8 +54,6 @@ def notificar_status(estado):
 
     def armado():
         return("armado")
-
-    print("antes de la funcoin")
     
     aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=0)
 

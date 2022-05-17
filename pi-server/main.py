@@ -23,7 +23,6 @@ def status_fn():
 
 @app.route("/armar")
 def armar_fn():
-    print("armar main")
     stat = {}
     stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
