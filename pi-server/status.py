@@ -21,22 +21,18 @@ def status_aberturas():
 
 def notificar_status(estado):
 
-    
+    GPIO.setmode(GPIO.BCM)
+    TODO_CERRADO = 12
+    GPIO.setup(TODO_CERRADO, GPIO.OUT)
+    VERIFICACION = 26
+    GPIO.setup(VERIFICACION, GPIO.OUT)
 
-    def luces(verificacion=False,todo_cerrado=False, segundos=5):
+    # Apagamos todo
+    GPIO.output(VERIFICACION, GPIO.LOW)
+    GPIO.output(TODO_CERRADO, GPIO.LOW)
 
-        GPIO.setmode(GPIO.BCM)
-        TODO_CERRADO = 12
-        GPIO.setup(TODO_CERRADO, GPIO.OUT)
-        VERIFICACION = 26
-        GPIO.setup(VERIFICACION, GPIO.OUT)
-
-        # Apagamos todo
-        GPIO.output(VERIFICACION, GPIO.LOW)
-        GPIO.output(TODO_CERRADO, GPIO.LOW)
+    def luces(verificacion=False,todo_cerrado=False, segundos=0):
         
-        print("Hace esto")
-
         if verificacion:
             GPIO.output(VERIFICACION, GPIO.HIGH)
         else:
@@ -47,7 +43,8 @@ def notificar_status(estado):
         else:
             GPIO.output(TODO_CERRADO, GPIO.LOW)
 
-        time.sleep(segundos)
+        if segundos:
+            time.sleep(segundos)
 
         GPIO.cleanup()
 
@@ -56,8 +53,7 @@ def notificar_status(estado):
 
     def intento_armado_fallido():
 
-        t = threading.Thread(target=luces, args=(True,False,5))
-        t.start()
+        luces(verificacion=True,todo_cerrado=False, segundos=0)
         
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
 
