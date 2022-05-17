@@ -50,10 +50,10 @@ def handle_invalid_usage(error):
     response.status_code = error.status_code
     return response
 
-@app.after_request
-def after_request_func(response):
-    GPIO.cleanup()
-    return response
+# @app.after_request
+# def after_request_func(response):
+#     GPIO.cleanup()
+#     return response
 
 if __name__ == "__main__":
     # True para desarrollo unicamente
