@@ -48,7 +48,7 @@ def notificar_status(estado):
 
         GPIO.cleanup()
 
-    def test(a,b):
+    def test():
         print("uno")
         time.sleep(2)
         print("dos")
@@ -64,7 +64,7 @@ def notificar_status(estado):
 
         luces(verificacion=True,todo_cerrado=False, segundos=0)
 
-        t = threading.Thread(target=test, args=(1,1,)) 
+        t = threading.Thread(target=test) 
         t.start()
         
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
