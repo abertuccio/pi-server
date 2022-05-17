@@ -19,6 +19,13 @@ def status_aberturas():
 
     return abertura_abierta
 
+def test():
+    print("uno")
+    time.sleep(2)
+    print("dos")
+    time.sleep(2)
+    print("tres")
+
 def notificar_status(estado):
 
     GPIO.setmode(GPIO.BCM)
@@ -48,21 +55,12 @@ def notificar_status(estado):
 
         GPIO.cleanup()
 
-    def test():
-        print("uno")
-        time.sleep(2)
-        print("dos")
-        time.sleep(2)
-        print("tres")
-
-
-
     def armado():
         return("armado")
 
     def intento_armado_fallido():
 
-        # luces(verificacion=True,todo_cerrado=False, segundos=0)
+        luces(verificacion=True,todo_cerrado=False, segundos=0)
 
         t = threading.Thread(target=test) 
         t.start()
