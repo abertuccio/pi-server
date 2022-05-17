@@ -5,8 +5,6 @@ from status import *
 from auth import *
 import json
 
-GPIO.setmode(GPIO.BCM)
-
 app = Flask(__name__, static_folder='app/static',)
 
 @app.route("/")
@@ -17,7 +15,7 @@ def main():
 def status():
     stat = {}
     stat["server"] = "El server RPI funciona correctamente"
-    stat["status_aberturas"] = status_aberturas(GPIO)
+    stat["status_aberturas"] = status_aberturas()["respuesta"]
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/armar")
