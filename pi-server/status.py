@@ -54,10 +54,11 @@ def notificar_status(estado):
 
     def armado():
         return("armado")
+    
+    aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=0)
 
     def intento_armado_fallido():
 
-        aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=0)
         
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
 
