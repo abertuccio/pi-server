@@ -20,11 +20,10 @@ def status_aberturas():
     return abertura_abierta
 
 def test():
-    print("uno---")
-    time.sleep(2)
-    print("dos---")
-    time.sleep(2)
-    print("tres---")
+    time.sleep(5)
+    f = open("/app/readme.txt", "a")
+    f.write("ejecutado en 2do plano:" + str(time.time()))
+    f.close()
     return
 
 def notificar_status(estado):

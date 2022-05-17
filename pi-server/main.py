@@ -1,9 +1,11 @@
 from flask import Flask,request,jsonify
 from errores.errores import *
-import RPi.GPIO as GPIO
+# import RPi.GPIO as GPIO
 from status import *
 from auth import *
 from armar import *
+import threading
+import time
 import json
 
 app = Flask(__name__, static_folder='app/static',)
@@ -32,7 +34,7 @@ def armar_fn():
     t = threading.Thread(target=test) 
     t.start()
     stat = {}
-    stat["server"] = "hammmbre" # armar()
+    stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/qr")
@@ -50,21 +52,10 @@ def handle_invalid_usage(error):
     response.status_code = error.status_code
     return response
 
-# @app.after_request
-# def after_request_func(response):
-#     GPIO.cleanup()
-#     return response
-
-@app.route("/hello")
-def Hello():
-    thread = threading.Thread(target=long_running_task)
-    thread.start()
-    return 'hello'
-
-def long_running_task():
-    print("long task started")
-    time.sleep(5)
-    print("long task ended")
+@app.after_request
+def after_request_func(response):
+    # GPIO.cleanup()
+    return response
 
 if __name__ == "__main__":
     # True para desarrollo unicamente
