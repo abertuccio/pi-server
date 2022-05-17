@@ -33,26 +33,26 @@ def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
         # GPIO.output(VERIFICACION, GPIO.LOW)
         # GPIO.output(TODO_CERRADO, GPIO.LOW)
 
-        GPIO.output(VERIFICACION, GPIO.HIGH)
+        # GPIO.output(VERIFICACION, GPIO.HIGH)
 
-        time.sleep(2)
+        # time.sleep(4)
 
-        GPIO.output(VERIFICACION, GPIO.LOW)
+        # GPIO.output(VERIFICACION, GPIO.LOW)
         
-        # if verificacion:
-        #     GPIO.output(VERIFICACION, GPIO.HIGH)
-        # else:
-        #     GPIO.output(VERIFICACION, GPIO.LOW)
+        if verificacion:
+            GPIO.output(VERIFICACION, GPIO.HIGH)
+        else:
+            GPIO.output(VERIFICACION, GPIO.LOW)
 
-        # if todo_cerrado:
-        #     GPIO.output(TODO_CERRADO, GPIO.HIGH)
-        # else:
-        #     GPIO.output(TODO_CERRADO, GPIO.LOW)
+        if todo_cerrado:
+            GPIO.output(TODO_CERRADO, GPIO.HIGH)
+        else:
+            GPIO.output(TODO_CERRADO, GPIO.LOW)
 
-        # if segundos:
-        #     time.sleep(segundos)
+        if segundos:
+            time.sleep(segundos)
 
-        # GPIO.cleanup()
+        GPIO.cleanup()
 
         return
 
@@ -64,7 +64,7 @@ def notificar_status(estado):
 
     def intento_armado_fallido():
 
-        aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=0)
+        aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=5)
         
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
 
