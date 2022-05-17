@@ -1,6 +1,5 @@
 from flask import Flask,request,jsonify
 from errores.errores import *
-# import RPi.GPIO as GPIO
 from status import *
 from auth import *
 from armar import *
@@ -43,7 +42,6 @@ def handle_invalid_usage(error):
 
 @app.after_request
 def after_request_func(response):
-    # GPIO.cleanup()
     return response
 
 if __name__ == "__main__":
