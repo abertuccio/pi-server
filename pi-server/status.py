@@ -55,7 +55,7 @@ def notificar_status(estado):
 
         t = threading.Thread(target=luces, args=(True,False,5))
         # threads.append(t) 
-        [t].start()
+        t.start()
         
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
 
