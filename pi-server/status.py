@@ -45,8 +45,8 @@ def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
 
         if segundos:
             time.sleep(segundos)
-
-        # GPIO.cleanup()
+        else:
+            time.sleep(1200)
 
         return
 
@@ -58,7 +58,10 @@ def notificar_status(estado):
 
     def intento_armado_fallido():
 
-        aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=5)
+        # aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=5)
+
+        t = threading.Thread(target=aviso_de_luces, args=(True,False,0))
+        t.start()
         
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
 
