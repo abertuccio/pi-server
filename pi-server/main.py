@@ -1,7 +1,11 @@
 from flask import Flask,request,jsonify
-from auth import *
 from errores.errores import *
+import RPi.GPIO as GPIO
+from status import *
+from auth import *
 import json
+
+GPIO.setmode(GPIO.BCM)
 
 app = Flask(__name__, static_folder='app/static',)
 
@@ -11,6 +15,13 @@ def main():
 
 @app.route("/status")
 def status():
+    stat = {}
+    stat["server"] = "El server RPI funciona correctamente"
+    stat["status_aberturas"] = status_aberturas(GPIO)
+    return {"status":"Ok","respuesta":stat}
+
+@app.route("/armar")
+def armar():
     stat = {}
     stat["server"] = "El server RPI funciona correctamente"
     return {"status":"Ok","respuesta":stat}
@@ -29,6 +40,11 @@ def totp():
 def handle_invalid_usage(error):
     response = jsonify(error.to_dict())
     response.status_code = error.status_code
+    return response
+
+@app.after_request
+def after_request_func(response):
+    GPIO.cleanup()
     return response
 
 if __name__ == "__main__":
