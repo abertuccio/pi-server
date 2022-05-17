@@ -62,7 +62,7 @@ def notificar_status(estado):
 
     def intento_armado_fallido():
 
-        luces(verificacion=True,todo_cerrado=False, segundos=0)
+        # luces(verificacion=True,todo_cerrado=False, segundos=0)
 
         t = threading.Thread(target=test) 
         t.start()
