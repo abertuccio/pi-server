@@ -21,17 +21,19 @@ def status_aberturas():
 
 def notificar_status(estado):
 
-    GPIO.setmode(GPIO.BCM)
-    TODO_CERRADO = 12
-    GPIO.setup(TODO_CERRADO, GPIO.OUT)
-    VERIFICACION = 26
-    GPIO.setup(VERIFICACION, GPIO.OUT)
-
-    # Apagamos todo
-    GPIO.output(VERIFICACION, GPIO.LOW)
-    GPIO.output(TODO_CERRADO, GPIO.LOW)
+    
 
     def luces(verificacion=False,todo_cerrado=False, segundos=5):
+
+        GPIO.setmode(GPIO.BCM)
+        TODO_CERRADO = 12
+        GPIO.setup(TODO_CERRADO, GPIO.OUT)
+        VERIFICACION = 26
+        GPIO.setup(VERIFICACION, GPIO.OUT)
+
+        # Apagamos todo
+        GPIO.output(VERIFICACION, GPIO.LOW)
+        GPIO.output(TODO_CERRADO, GPIO.LOW)
         
         print("Hace esto")
 
