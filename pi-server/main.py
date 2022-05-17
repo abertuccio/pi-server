@@ -15,7 +15,7 @@ def main():
     return "El server RPI funciona correctamente"
 
 @app.route("/status")
-def status_fn():
+def status_fn():    
     stat = {}
     stat["server"] = "El server RPI funciona correctamente"
     stat["abertura_abierta"] = status_aberturas()
@@ -23,6 +23,7 @@ def status_fn():
 
 @app.route("/armar")
 def armar_fn():
+    print("armar main")
     stat = {}
     stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
