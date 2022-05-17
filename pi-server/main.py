@@ -3,6 +3,7 @@ from errores.errores import *
 import RPi.GPIO as GPIO
 from status import *
 from auth import *
+from armar import *
 import json
 
 app = Flask(__name__, static_folder='app/static',)
@@ -12,16 +13,16 @@ def main():
     return "El server RPI funciona correctamente"
 
 @app.route("/status")
-def status():
+def status_fn():
     stat = {}
     stat["server"] = "El server RPI funciona correctamente"
-    stat["status_aberturas"] = status_aberturas()["respuesta"]
+    stat["abertura_abierta"] = status_aberturas()
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/armar")
-def armar():
+def armar_fn():
     stat = {}
-    stat["server"] = "El server RPI funciona correctamente"
+    stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
 
 

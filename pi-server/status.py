@@ -16,6 +16,40 @@ def status_aberturas():
 
     GPIO.cleanup()
 
-    stat = {}
-    stat["abertura_abierta"] = abertura_abierta
-    return {"status":"Ok","respuesta":stat}
+    return abertura_abierta
+
+def notificar_status(estado):
+
+    GPIO.setmode(GPIO.BCM)
+    TODO_CERRADO = 12
+    GPIO.setup(TODO_CERRADO, GPIO.OUT)
+    VERIFICACION = 26
+    GPIO.setup(VERIFICACION, GPIO.OUT)
+
+    # Apagamos todo
+    GPIO.output(VERIFICACION, GPIO.LOW)
+    GPIO.output(TODO_CERRADO, GPIO.LOW)
+
+
+    def armado():
+        return("armado")
+
+    def intento_armado_fallido():
+        GPIO.output(VERIFICACION, GPIO.HIGH)
+        GPIO.output(TODO_CERRADO, GPIO.LOW)
+        return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
+
+    def no_armado():        
+        return("no armado")
+
+    switch_estado = {
+	"ARMADO": armado,
+	"INTENTO_ARMADO_FALLIDO": intento_armado_fallido,
+	"NO_ARMADO": no_armado
+    }
+
+    res = switch_estado[estado]()
+
+    GPIO.cleanup()
+
+    return res
