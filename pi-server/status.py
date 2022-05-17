@@ -33,6 +33,8 @@ def notificar_status(estado):
 
     def luces(verificacion=False,todo_cerrado=False, segundos=5):
         
+        print("Hace esto")
+
         if verificacion:
             GPIO.output(VERIFICACION, GPIO.HIGH)
         else:
@@ -42,6 +44,7 @@ def notificar_status(estado):
             GPIO.output(TODO_CERRADO, GPIO.HIGH)
         else:
             GPIO.output(TODO_CERRADO, GPIO.LOW)
+
         time.sleep(segundos)
 
         GPIO.cleanup()
