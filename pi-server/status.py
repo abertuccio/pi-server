@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import threading
 import requests
 import time
 
@@ -30,14 +31,30 @@ def notificar_status(estado):
     GPIO.output(VERIFICACION, GPIO.LOW)
     GPIO.output(TODO_CERRADO, GPIO.LOW)
 
+    def luces(verificacion=False,todo_cerrado=False, segundos=5):
+        
+        if verificacion:
+            GPIO.output(VERIFICACION, GPIO.HIGH)
+        else:
+            GPIO.output(VERIFICACION, GPIO.LOW)
+
+        if todo_cerrado:
+            GPIO.output(TODO_CERRADO, GPIO.HIGH)
+        else:
+            GPIO.output(TODO_CERRADO, GPIO.LOW)
+        time.sleep(segundos)
+
+        GPIO.cleanup()
 
     def armado():
         return("armado")
 
     def intento_armado_fallido():
-        GPIO.output(VERIFICACION, GPIO.HIGH)
-        GPIO.output(TODO_CERRADO, GPIO.LOW)
-        time.sleep(5)
+
+        t = threading.Thread(target=luces, args=(True,False,5))
+        threads.append(t) 
+        t.start()
+        
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
 
     def no_armado():        
