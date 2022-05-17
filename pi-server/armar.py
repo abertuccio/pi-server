@@ -3,6 +3,9 @@ from status import *
 
 
 def armar():
+
+    print("Se ejecuta armar")
+
     abertura_abierta = status_aberturas()
 
     if abertura_abierta:
