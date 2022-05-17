@@ -54,6 +54,8 @@ def notificar_status(estado):
 
     def armado():
         return("armado")
+
+    print("antes de la funcoin")
     
     aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=0)
 
