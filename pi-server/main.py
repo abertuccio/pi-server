@@ -55,6 +55,18 @@ def handle_invalid_usage(error):
 #     GPIO.cleanup()
 #     return response
 
+@app.route("/hello")
+def Hello():
+    thread = threading.Thread(target=long_running_task)
+    thread.start()
+    return 'hello'
+
+def long_running_task():
+    print("long task started")
+    time.sleep(5)
+    print("long task ended")
+    return redirect("/goodbye")
+
 if __name__ == "__main__":
     # True para desarrollo unicamente
     app.run(host="0.0.0.0", debug=True, port=44306)
