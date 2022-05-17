@@ -23,8 +23,6 @@ def status_fn():
 
 @app.route("/armar")
 def armar_fn():
-    t = threading.Thread(target=test) 
-    t.start()
     stat = {}
     stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
