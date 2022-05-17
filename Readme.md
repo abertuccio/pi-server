@@ -42,7 +42,10 @@
 * `sudo apt-get install -y git docker-ce docker-ce-cli containerd.io docker-compose-plugin` 
 
 # Instalar proyecto 
-dentro del RPI: `git clone https://github.com/abertuccio/pi-server.git`
+* dentro del RPI: `git clone https://github.com/abertuccio/pi-server.git`
+    * Para actualizar el código `git pull`
+    * Si hubiera que actualizar el código (habiendolo cambiado) conviene borrar todo y hacer clone de nuevo
+* Crear Archivo `conf/CONF.env` 
 `cd pi-server && sudo chmod +x inicio.sh`
 `sudo ./inicio.sh`
 

@@ -5,6 +5,9 @@ import json
 
 app = Flask(__name__, static_folder='app/static',)
 
+@app.route("/")
+def main():
+    return "El server RPI funciona correctamente"
 
 @app.route("/status")
 def status():
