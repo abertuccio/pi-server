@@ -31,8 +31,6 @@ def notificar_status(estado):
     GPIO.output(VERIFICACION, GPIO.LOW)
     GPIO.output(TODO_CERRADO, GPIO.LOW)
 
-    # threads = list()
-
     def luces(verificacion=False,todo_cerrado=False, segundos=5):
         
         if verificacion:
@@ -54,7 +52,6 @@ def notificar_status(estado):
     def intento_armado_fallido():
 
         t = threading.Thread(target=luces, args=(True,False,5))
-        # threads.append(t) 
         t.start()
         
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
