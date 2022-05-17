@@ -34,6 +34,10 @@ def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
         # GPIO.output(TODO_CERRADO, GPIO.LOW)
 
         GPIO.output(VERIFICACION, GPIO.HIGH)
+
+        time.sleep(2)
+
+        GPIO.output(VERIFICACION, GPIO.LOW)
         
         if verificacion:
             GPIO.output(VERIFICACION, GPIO.HIGH)
