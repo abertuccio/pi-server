@@ -20,11 +20,12 @@ def status_aberturas():
     return abertura_abierta
 
 def test():
-    print("uno")
+    print("uno---")
     time.sleep(2)
-    print("dos")
+    print("dos---")
     time.sleep(2)
-    print("tres")
+    print("tres---")
+    return
 
 def notificar_status(estado):
 

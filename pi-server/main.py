@@ -25,7 +25,6 @@ def armar_fn():
     stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
 
-
 @app.route("/qr")
 def qr():
     return getQr()
