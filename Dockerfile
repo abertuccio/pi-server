@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.8
+FROM python:3
 
 # Setting hora local y lang
 # ENV TZ=America/Argentina/Buenos_Aires
@@ -14,3 +14,5 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt
 EXPOSE 44306
 
 COPY ./pi-server /app
+
+CMD ["python", "app/main.py"]
