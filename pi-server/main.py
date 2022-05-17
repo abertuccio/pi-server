@@ -21,14 +21,6 @@ def status_fn():
     stat["abertura_abierta"] = status_aberturas()
     return {"status":"Ok","respuesta":stat}
 
-def test():
-    print("uno---")
-    time.sleep(2)
-    print("dos---")
-    time.sleep(2)
-    print("tres---")
-    return
-
 @app.route("/armar")
 def armar_fn():
     t = threading.Thread(target=test) 
@@ -40,7 +32,6 @@ def armar_fn():
 @app.route("/qr")
 def qr():
     return getQr()
-
 
 @app.route("/totp")
 def totp():
