@@ -37,6 +37,7 @@ def notificar_status(estado):
     def intento_armado_fallido():
         GPIO.output(VERIFICACION, GPIO.HIGH)
         GPIO.output(TODO_CERRADO, GPIO.LOW)
+        time.sleep(5)
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
 
     def no_armado():        
