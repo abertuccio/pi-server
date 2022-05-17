@@ -65,7 +65,6 @@ def long_running_task():
     print("long task started")
     time.sleep(5)
     print("long task ended")
-    return redirect("/goodbye")
 
 if __name__ == "__main__":
     # True para desarrollo unicamente
