@@ -29,7 +29,7 @@ while True:
     try:
         res = r.json()
     except:
-        continue
+        pass
 
     if cod == 200 and res["status"] == 'Ok' and cantidad_maxima_intentos > 0:
         print("Está funcionando")
