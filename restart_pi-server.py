@@ -14,7 +14,7 @@ cantidad_maxima_intentos = 100
 
 while True:
     print("Verificamos si el server está arriba")
-    r = requests.get(rpi_url)
+    r = requests.get(rpi_url, verify=False)
     cod = r.status_code
     res = r.json()
 
