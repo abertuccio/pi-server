@@ -66,15 +66,25 @@ def notificar_status(estado):
         t = threading.Thread(target=aviso_de_luces, args=(True,False,5,))
         t.start()
 
-        return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
+        return("No está todo cerrado, cierre todo antes de iniciar la alarma.")    
 
     def no_armado():        
         return("no armado")
 
+    def hubo_una_apertura():
+
+        t = threading.Thread(target=aviso_de_luces, args=(True,False,5,))
+        t.start()
+
+        # Enviar mensaje
+
+        return("Hubo una apertura.")
+
     switch_estado = {
 	"ARMADO": armado,
 	"INTENTO_ARMADO_FALLIDO": intento_armado_fallido,
-	"NO_ARMADO": no_armado
+	"NO_ARMADO": no_armado,
+    "APERTURA": hubo_una_apertura()
     }
 
     res = switch_estado[estado]()
