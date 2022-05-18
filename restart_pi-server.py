@@ -4,17 +4,17 @@ import subprocess
 
 path_telebid = '/home/pi/'
 
-print("Restarteamos Docker")
+# print("Restarteamos Docker")
 
-restartDocker = "docker restart pi-server"
-process = subprocess.Popen(restartDocker.split(), stdout=subprocess.PIPE)
-outs, errs = process.communicate()
+# restartDocker = "docker restart pi-server"
+# process = subprocess.Popen(restartDocker.split(), stdout=subprocess.PIPE)
+# outs, errs = process.communicate()
 
-print(outs)
-print(errs)
+# print("Docker iniciado: ", str(outs))
+# print("Errores: ",errs)
 
-print("Esperamos 20 segudos para intentar telebit")
-time.sleep(20)
+# print("Esperamos 20 segudos para intentar telebit")
+# time.sleep(20)
 
 rpi_url = 'https://light-panda-16.telebit.io/status'
 cantidad_maxima_intentos = 100
