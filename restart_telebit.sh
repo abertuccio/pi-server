@@ -1,1 +1,1 @@
-sudo -u www-data -c '/home/pi/telebit restart'
+sudo -u www-data bash -c '/home/pi/telebit restart'
