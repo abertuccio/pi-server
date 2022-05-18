@@ -1,0 +1,1 @@
+sudo -u www-data bash -c '/home/pi/telebit restart'
