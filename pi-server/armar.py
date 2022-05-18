@@ -8,5 +8,7 @@ def armar():
 
     if abertura_abierta:
         res = notificar_status("INTENTO_ARMADO_FALLIDO")
+    else:
+        res = notificar_status("ARMADO")
 
     return res

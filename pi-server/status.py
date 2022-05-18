@@ -55,7 +55,10 @@ def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
 def notificar_status(estado):
 
     def armado():
-        return("armado")
+        t = threading.Thread(target=aviso_de_luces, args=(False,True,0,))
+        t.start()
+
+        return("Está todo cerrado, se puede iniciar la alarma")
     
 
     def intento_armado_fallido():
