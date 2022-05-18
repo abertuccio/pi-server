@@ -4,8 +4,12 @@ import subprocess
 
 path_telebid = '/home/pi/'
 
+print("Restarteamos Docker")
+
 restartDocker = "docker restart pi-server"
 process = subprocess.Popen(restartDocker.split(), stdout=subprocess.PIPE)
+
+print(process)
 
 time.sleep(20)
 
@@ -16,7 +20,7 @@ while True:
     print("Verificamos si el server está arriba")
     r = requests.get(rpi_url, verify=False)
     cod = r.status_code
-    res = []
+    res = {}
     res["status"] == False
 
     try:
