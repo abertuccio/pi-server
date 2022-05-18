@@ -1,9 +1,10 @@
-import RPi.GPIO as GPIO
 import threading
 import requests
 import time
 
 def status_aberturas():
+
+    import RPi.GPIO as GPIO
 
     GPIO.setmode(GPIO.BCM)
 
@@ -20,6 +21,8 @@ def status_aberturas():
     return abertura_abierta
 
 def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
+
+        import RPi.GPIO as GPIO
 
         GPIO.setmode(GPIO.BCM)
 
@@ -62,8 +65,6 @@ def notificar_status(estado):
 
         t = threading.Thread(target=aviso_de_luces, args=(True,False,5,))
         t.start()
-        
-        time.sleep(2)
 
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")
 
