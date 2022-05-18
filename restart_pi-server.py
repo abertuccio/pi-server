@@ -31,8 +31,13 @@ while True:
     except:
         pass
 
-    if cod == 200 and res["status"] == 'Ok' and cantidad_maxima_intentos > 0:
+    print(res)
+
+    if cod == 200 and res["status"] == 'Ok':
         print("Está funcionando")
+        break
+
+    if not cantidad_maxima_intentos:
         break
     
     print("Intentamos levantarlo")
