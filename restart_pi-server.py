@@ -16,7 +16,13 @@ while True:
     print("Verificamos si el server está arriba")
     r = requests.get(rpi_url, verify=False)
     cod = r.status_code
-    res = r.json()
+    res = []
+    res["status"] == False
+
+    try:
+        res = r.json()
+    except Exception(e):
+        continue
 
     if cod == 200 and res["status"] == 'Ok' and cantidad_maxima_intentos > 0:
         print("Está funcionando")
