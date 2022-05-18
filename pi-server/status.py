@@ -5,8 +5,6 @@ import time
 
 def status_aberturas():
 
-    # import RPi.GPIO as GPIO
-
     GPIO.setmode(GPIO.BCM)
 
     INPUT_ABERTURA_1 = 18
@@ -17,13 +15,11 @@ def status_aberturas():
 
     abertura_abierta = bool(GPIO.input(INPUT_ABERTURA_1))
 
-    # GPIO.cleanup()
+    GPIO.cleanup()
 
     return abertura_abierta
 
 def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
-
-        # import RPi.GPIO as GPIO
 
         GPIO.setmode(GPIO.BCM)
 
@@ -34,8 +30,8 @@ def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
         GPIO.setup(VERIFICACION, GPIO.OUT)
 
         # Apagamos todo
-        # GPIO.output(VERIFICACION, GPIO.LOW)
-        # GPIO.output(TODO_CERRADO, GPIO.LOW)
+        GPIO.output(VERIFICACION, GPIO.LOW)
+        GPIO.output(TODO_CERRADO, GPIO.LOW)
         
         if verificacion:
             GPIO.output(VERIFICACION, GPIO.HIGH)
@@ -63,8 +59,6 @@ def notificar_status(estado):
     
 
     def intento_armado_fallido():
-
-        # aviso_de_luces(verificacion=True,todo_cerrado=False, segundos=5)
 
         t = threading.Thread(target=aviso_de_luces, args=(True,False,5,))
         t.start()
