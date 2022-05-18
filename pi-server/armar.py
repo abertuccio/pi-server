@@ -12,6 +12,9 @@ def apagaSirena():
     GPIO.output(RELAY_220, GPIO.HIGH)
     GPIO.output(RELAY_220, GPIO.LOW)
 
+    GPIO.cleanup()
+    return "Alarma desarmada"
+
 def enciendeSirena(segundos = 10):
     # if obtenemosPermisoHacerSonar():
     GPIO.setmode(GPIO.BCM)

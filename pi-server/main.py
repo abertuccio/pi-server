@@ -26,6 +26,12 @@ def armar_fn():
     stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
 
+@app.route("/desarmar")
+def armar_fn():
+    stat = {}
+    stat["server"] = apagaSirena()
+    return {"status":"Ok","respuesta":stat}
+
 @app.route("/qr")
 def qr():
     return getQr()
