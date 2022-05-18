@@ -43,7 +43,7 @@ while True:
     print("Intentamos levantarlo")
     restartTunnel = 'sudo -u www-data bash -c "/home/pi/telebit restart"'
     restartTunnel = ["sudo", "-u", "www-data", "-c", "/home/pi/telebit restart"]
-    process = subprocess.Popen(restartTunnel.split(), universal_newlines=True, stdout=subprocess.PIPE,cwd=path_telebid)
+    process = subprocess.Popen(restartTunnel, universal_newlines=True, stdout=subprocess.PIPE,cwd=path_telebid)
     cantidad_maxima_intentos = cantidad_maxima_intentos - 1
     time.sleep(10)
 
