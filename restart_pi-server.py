@@ -13,6 +13,7 @@ outs, errs = process.communicate()
 print(outs)
 print(errs)
 
+print("Esperamos 20 segudos para intentar telebit")
 time.sleep(20)
 
 rpi_url = 'https://light-panda-16.telebit.io/status'
@@ -27,7 +28,7 @@ while True:
 
     try:
         res = r.json()
-    except Exception(e):
+    except:
         continue
 
     if cod == 200 and res["status"] == 'Ok' and cantidad_maxima_intentos > 0:
