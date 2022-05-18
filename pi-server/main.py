@@ -27,7 +27,7 @@ def armar_fn():
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/desarmar")
-def armar_fn():
+def desarmar_fn():
     stat = {}
     stat["server"] = apagaSirena()
     return {"status":"Ok","respuesta":stat}
