@@ -2,7 +2,7 @@ import requests
 import time
 import subprocess
 
-path_telebid = '/home/pi/'
+# path_telebid = '/home/pi/'
 
 print("Restarteamos Docker")
 
@@ -36,8 +36,8 @@ while True:
         break
     
     print("Intentamos levantarlo")
-    restartTunnel = "telebit restart"
-    process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE,cwd=path_telebid)
+    restartTunnel = "/home/pi/telebit restart"
+    process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
     cantidad_maxima_intentos = cantidad_maxima_intentos - 1
     time.sleep(10)
 
