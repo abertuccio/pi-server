@@ -84,7 +84,7 @@ def notificar_status(estado):
 	"ARMADO": armado,
 	"INTENTO_ARMADO_FALLIDO": intento_armado_fallido,
 	"NO_ARMADO": no_armado,
-    "APERTURA": hubo_una_apertura()
+    "APERTURA": hubo_una_apertura
     }
 
     res = switch_estado[estado]()
