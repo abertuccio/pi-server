@@ -49,8 +49,10 @@ def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
 
         if segundos:
             time.sleep(segundos)
+            GPIO.cleanup()
         else:
             time.sleep(1200)
+            GPIO.cleanup()
 
         return
 
