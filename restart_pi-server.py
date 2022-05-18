@@ -8,8 +8,10 @@ print("Restarteamos Docker")
 
 restartDocker = "docker restart pi-server"
 process = subprocess.Popen(restartDocker.split(), stdout=subprocess.PIPE)
+outs, errs = process.communicate()
 
-print(process)
+print(outs)
+print(errs)
 
 time.sleep(20)
 
@@ -21,7 +23,7 @@ while True:
     r = requests.get(rpi_url, verify=False)
     cod = r.status_code
     res = {}
-    res["status"] == False
+    res["status"] = False
 
     try:
         res = r.json()
