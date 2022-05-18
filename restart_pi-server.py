@@ -41,9 +41,14 @@ while True:
         break
 
     print("Intentamos levantarlo")
-    restartTunnel = './restart_telebit.sh'
+    # restartTunnel = './restart_telebit.sh'
     # restartTunnel = ["sudo", "-u", "www-data", "-c", "'/home/pi/telebit restart'"]
-    process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE,cwd="/home/pi/pi-server")
+    # process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE,cwd="/home/pi/pi-server")
+
+    restartTunnel = "/home/pi/pi-server/restart_telebit.sh"
+    process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
+
+
     cantidad_maxima_intentos = cantidad_maxima_intentos - 1
     time.sleep(10)
 
