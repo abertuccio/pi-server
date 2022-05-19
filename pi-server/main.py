@@ -10,9 +10,6 @@ import json
 
 app = Flask(__name__, static_folder='app/static',)
 
-f = open("status_alarma", "w")
-f.write(True)
-
 @app.route("/")
 def main():
     return "El server RPI funciona correctamente"
