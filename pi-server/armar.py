@@ -35,6 +35,7 @@ def verifica_apertura(intervalo):
         while True:
 
             if not debe_sonar_alarma:
+                debe_sonar_alarma = True
                 break
             abertura_abierta = status_aberturas()
             if abertura_abierta:
