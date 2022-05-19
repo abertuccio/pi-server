@@ -1,3 +1,4 @@
+from tinydb import TinyDB, Query
 import RPi.GPIO as GPIO
 from status import *
 import threading
@@ -33,8 +34,7 @@ def enciendeSirena(segundos = 10):
 def verifica_apertura(intervalo):
     try:
         while True:
-
-            if not debe_sonar_alarma:
+            if False:
                 debe_sonar_alarma = True
                 break
             abertura_abierta = status_aberturas()
@@ -47,6 +47,8 @@ def verifica_apertura(intervalo):
         GPIO.cleanup()
 
 def armar():
+
+    setDebeSonarAlarma(True)
 
     abertura_abierta = status_aberturas()
 

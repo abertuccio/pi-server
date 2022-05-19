@@ -1,7 +1,17 @@
+from tinydb import TinyDB, Query
 import RPi.GPIO as GPIO
 import threading
 import requests
 import time
+
+def getDdebe_sonar_alarma():
+    
+    db = TinyDB('pi-server/db.json')
+    db.insert({'debe_sonar_alarma': True})
+
+def setDebeSonarAlarma(bool):
+    db = TinyDB('pi-server/db.json')
+    db.insert({'debe_sonar_alarma': bool})
 
 def status_aberturas():
 
