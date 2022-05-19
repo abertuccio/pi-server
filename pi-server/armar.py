@@ -3,13 +3,17 @@ from status import *
 import threading
 import time
 
+debe_sonar_alarma = True
+
 def apagaSirena():
+
+    debe_sonar_alarma = False
+
     GPIO.setmode(GPIO.BCM)
 
     # Señal de abrir el Relay, Ej: Sirena
     RELAY_220 = 17
-    GPIO.setup(RELAY_220, GPIO.OUT)        
-    GPIO.output(RELAY_220, GPIO.HIGH)
+    GPIO.setup(RELAY_220, GPIO.OUT) 
     GPIO.output(RELAY_220, GPIO.LOW)
 
     GPIO.cleanup()
@@ -29,6 +33,9 @@ def enciendeSirena(segundos = 10):
 def verifica_apertura(intervalo):
     try:
         while True:
+
+            if not debe_sonar_alarma:
+                break
             abertura_abierta = status_aberturas()
             if abertura_abierta:
                 notificar_status("APERTURA")
