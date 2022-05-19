@@ -41,7 +41,7 @@ while True:
         print("Alcanzamos la máxima cantidad de intentos.")
         break
 
-    print("Intentamos levantarlo")
+    print("Parece no responder, intentamos levantarlo, Intentos: ",cantidad_maxima_intentos)
     restartTunnel = '/home/pi/telebit restart'
     # process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE,cwd="/home/pi")
     process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
