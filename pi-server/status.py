@@ -24,7 +24,7 @@ def status_aberturas():
 
     abertura_abierta = bool(GPIO.input(INPUT_ABERTURA_1))
 
-    GPIO.cleanup()
+    # GPIO.cleanup()
 
     return abertura_abierta
 

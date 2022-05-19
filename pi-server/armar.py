@@ -38,7 +38,6 @@ def enciendeSirena(segundos = 30):
     # apagaSirena()
 
 def verifica_apertura(intervalo):
-    try:
         while True:
             if not getDdebe_sonar_alarma():
                 setDebeSonarAlarma(True)
@@ -48,9 +47,6 @@ def verifica_apertura(intervalo):
                 notificar_status("APERTURA")
                 enciendeSirena()
             time.sleep(intervalo)
-    except KeyboardInterrupt:
-        print("Programa Terminado")
-        GPIO.cleanup()
 
 def armar():
 
