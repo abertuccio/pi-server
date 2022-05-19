@@ -6,11 +6,11 @@ import time
 
 def getDdebe_sonar_alarma():
     
-    db = TinyDB('db/db.json')
+    db = TinyDB('pi-server/db/db.json')
     db.insert({'debe_sonar_alarma': True})
 
 def setDebeSonarAlarma(bool):
-    db = TinyDB('db/db.json')
+    db = TinyDB('pi-server/db/db.json')
     db.insert({'debe_sonar_alarma': bool})
 
 def status_aberturas():
