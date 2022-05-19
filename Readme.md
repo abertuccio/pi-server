@@ -53,6 +53,10 @@
 `cd pi-server && sudo chmod +x inicio.sh`
 `sudo ./inicio.sh`
 
+* Agregar script de inicio:
+* `sudo nano /etc/rc.local`
+* adentro pegar `python /home/pi/pi-server/restart_pi-server.py` antes de `exit 0`
+
 
 # Magnéticos
 
