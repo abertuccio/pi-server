@@ -24,6 +24,8 @@ def apagaSirena():
 
 def enciendeSirena(segundos = 30):
     # if obtenemosPermisoHacerSonar():
+    print("La alarma sonará: ",segundos," segundos")
+
     GPIO.setmode(GPIO.BCM)
 
     # Señal de abrir el Relay, Ej: Sirena
