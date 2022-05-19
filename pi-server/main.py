@@ -3,6 +3,7 @@ from errores.errores import *
 from status import *
 from auth import *
 from armar import *
+import subprocess
 import threading
 import time
 import json
