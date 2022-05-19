@@ -9,6 +9,9 @@ import json
 
 app = Flask(__name__, static_folder='app/static',)
 
+restartTunnel = '/home/pi/telebit restart'
+process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
+
 @app.route("/")
 def main():
     return "El server RPI funciona correctamente"
