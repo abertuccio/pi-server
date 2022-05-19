@@ -1,2 +1,3 @@
 conf/CONF.env
 __pycache__/
+pi-server/db/db.json
