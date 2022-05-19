@@ -4,7 +4,7 @@ import time
 import subprocess
 import datetime
 
-f = open('home/pi/pi-server/cron.log', 'w')
+f = open('home/pi/pi-server/cron_py.log', 'w')
 
 path_telebid = '/home/pi/'
 
