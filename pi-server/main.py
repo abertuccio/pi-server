@@ -10,8 +10,10 @@ import json
 
 app = Flask(__name__, static_folder='app/static',)
 
-restartTunnel = '/home/pi/telebit restart'
+restartTunnel = 'whoami'
 process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
+
+print(process)
 
 @app.route("/")
 def main():
