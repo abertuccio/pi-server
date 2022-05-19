@@ -12,8 +12,8 @@ app = Flask(__name__, static_folder='app/static',)
 
 restartTunnel = 'whoami'
 process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
-
-print(process)
+out, err = p.communicate()
+print(out)
 
 @app.route("/")
 def main():
