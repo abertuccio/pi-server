@@ -18,7 +18,7 @@ print("Esperamos 20 segudos para intentar telebit")
 time.sleep(20)
 
 rpi_url = 'https://stale-octopus-48.telebit.io/status'
-cantidad_maxima_intentos = 100
+cantidad_maxima_intentos = 30
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
