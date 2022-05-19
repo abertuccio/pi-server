@@ -10,11 +10,6 @@ import json
 
 app = Flask(__name__, static_folder='app/static',)
 
-restartTunnel = 'whoami'
-process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
-out, err = process.communicate()
-print(out)
-
 @app.route("/")
 def main():
     return "El server RPI funciona correctamente"
