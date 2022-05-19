@@ -4,13 +4,15 @@ from status import *
 import threading
 import time
 
-debe_sonar_alarma = True
 
-def apagaSirena():
-
+def desarmar():
     setDebeSonarAlarma(False)
 
     time.sleep(2)
+
+    return apagaSirena()
+
+def apagaSirena():
 
     GPIO.setmode(GPIO.BCM)
 

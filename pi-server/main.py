@@ -30,7 +30,7 @@ def armar_fn():
 @app.route("/desarmar")
 def desarmar_fn():
     stat = {}
-    stat["server"] = apagaSirena()
+    stat["server"] = desarmar()
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/qr")
