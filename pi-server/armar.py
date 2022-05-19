@@ -8,7 +8,9 @@ debe_sonar_alarma = True
 
 def apagaSirena():
 
-    debe_sonar_alarma = False
+    setDebeSonarAlarma(False)
+
+    time.sleep(2)
 
     GPIO.setmode(GPIO.BCM)
 
@@ -34,8 +36,8 @@ def enciendeSirena(segundos = 10):
 def verifica_apertura(intervalo):
     try:
         while True:
-            if False:
-                debe_sonar_alarma = True
+            if not getDdebe_sonar_alarma():
+                setDebeSonarAlarma(True)
                 break
             abertura_abierta = status_aberturas()
             if abertura_abierta:
