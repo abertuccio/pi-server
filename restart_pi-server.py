@@ -42,7 +42,7 @@ while True:
         break
 
     print("Intentamos levantarlo")
-    restartTunnel = ['/home/pi/telebit restart']
+    restartTunnel = '/home/pi/telebit restart'
     # process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE,cwd="/home/pi")
     process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
 
