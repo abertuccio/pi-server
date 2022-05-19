@@ -8,9 +8,9 @@ def getDdebe_sonar_alarma():
     db = TinyDB('/app/db/db.json')
     return db.all()[0]['debe_sonar_alarma']
 
-def setDebeSonarAlarma(bool):
+def setDebeSonarAlarma(par):
     db = TinyDB('/app/db/db.json')
-    db.update({"debe_sonar_alarma":bool})
+    db.update({"debe_sonar_alarma":bool(par)})
 
 def status_aberturas():
 

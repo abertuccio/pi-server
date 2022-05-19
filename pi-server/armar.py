@@ -22,7 +22,7 @@ def apagaSirena():
     GPIO.cleanup()
     return "Alarma desarmada"
 
-def enciendeSirena(segundos = 10):
+def enciendeSirena(segundos = 30):
     # if obtenemosPermisoHacerSonar():
     GPIO.setmode(GPIO.BCM)
 
