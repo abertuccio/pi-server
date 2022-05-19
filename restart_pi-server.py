@@ -37,7 +37,7 @@ requests.get(telegram_URL+'&text=Se reinicia RPI, IP: '+ip())
 
 while True:
     print("Verificamos si el server está arriba")
-    r = requests.get(rpi_url, verify=False)
+    r = requests.get(rpi_url, verify=False, timeout=5)
     cod = r.status_code
     res = {}
     res["status"] = False
