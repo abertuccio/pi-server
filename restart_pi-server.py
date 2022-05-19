@@ -1,3 +1,4 @@
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import requests
 import time
 import subprocess
@@ -19,6 +20,21 @@ time.sleep(20)
 rpi_url = 'https://stale-octopus-48.telebit.io/status'
 cantidad_maxima_intentos = 100
 
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+
+def ip():
+    import socket
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    ip = s.getsockname()[0]
+    s.close()
+    return ip
+
+
+telegram_URL="https://api.telegram.org/bot1384549867:AAEx0kR6bAulP6Rnd3_8w0RqMQL9gmDbpDo/sendMessage?chat_id=1072327243"
+
+requests.get(telegram_URL+'&text=Se reinicia RPI, IP: '+ip())
+
 while True:
     print("Verificamos si el server está arriba")
     r = requests.get(rpi_url, verify=False)
@@ -34,6 +50,7 @@ while True:
     print(res)
 
     if cod == 200 and res["status"] == 'Ok':
+        requests.get(telegram_URL+'&text=El server de la alarma está operativo.')
         print("Está funcionando")
         break
 
