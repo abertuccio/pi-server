@@ -2,19 +2,20 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import requests
 import time
 import subprocess
+import datetime
 
 path_telebid = '/home/pi/'
 
-print("Restarteamos Docker")
+print(datetime.datetime.now()," Restarteamos Docker")
 
 restartDocker = "docker restart pi-server"
 process = subprocess.Popen(restartDocker.split(), stdout=subprocess.PIPE)
 outs, errs = process.communicate()
 
-print("Docker iniciado: ", str(outs))
-print("Errores: ",errs)
+print(datetime.datetime.now()," Docker iniciado: ", str(outs))
+print(datetime.datetime.now()," Errores: ",errs)
 
-print("Esperamos 20 segudos para intentar telebit")
+print(datetime.datetime.now()," Esperamos 20 segudos para intentar telebit")
 time.sleep(20)
 
 rpi_url = 'https://stale-octopus-48.telebit.io/status'
@@ -36,7 +37,7 @@ telegram_URL="https://api.telegram.org/bot1384549867:AAEx0kR6bAulP6Rnd3_8w0RqMQL
 requests.get(telegram_URL+'&text=Se reinicia RPI, IP: '+ip())
 
 while True:
-    print("Verificamos si el server está arriba")
+    print(datetime.datetime.now()," Verificamos si el server está arriba")
     r = requests.get(rpi_url, verify=False, timeout=5)
     cod = r.status_code
     res = {}
@@ -51,14 +52,14 @@ while True:
 
     if cod == 200 and res["status"] == 'Ok':
         requests.get(telegram_URL+'&text=El server de la alarma está operativo.')
-        print("Está funcionando")
+        print(datetime.datetime.now()," Está funcionando")
         break
 
     if not cantidad_maxima_intentos:
-        print("Alcanzamos la máxima cantidad de intentos.")
+        print(datetime.datetime.now()," Alcanzamos la máxima cantidad de intentos.")
         break
 
-    print("Parece no responder, intentamos levantarlo, Intentos: ",cantidad_maxima_intentos)
+    print(datetime.datetime.now()," Parece no responder, intentamos levantarlo, Intentos: ",cantidad_maxima_intentos)
     restartTunnel = '/home/pi/telebit restart'
     process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
 
