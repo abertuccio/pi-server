@@ -25,7 +25,7 @@
 * instalamos Telebit en el RPI `curl https://get.telebit.io/ | bash`
 * Seguimos las instrucciones para emparejar
     * si nos equivocamos de mail, hacer `nano /home/pi/.config/telebit/telebitd.yml`, cambiar el mail y tirar de nuevo el comando del principio
-* Eso nos va a dar una dirección para acceder desde afuera de la red ej: "light-panda-16.telebit.io" "https://light-panda-16.telebit.io/"
+* Eso nos va a dar una dirección para acceder desde afuera de la red ej: "stale-octopus-48.telebit.io" "https://stale-octopus-48.telebit.io/"
 
 * `sudo apt update`
 * `sudo apt-get install \
@@ -40,6 +40,10 @@
 * `sudo apt list update`
 * `sudo apt update`
 * `sudo apt-get install -y git docker-ce docker-ce-cli containerd.io docker-compose-plugin` 
+* Hacemos que docker se pueda ejecutar sin sudo
+* `sudo groupadd docker`
+* `sudo gpasswd -a $USER docker`
+* `newgrp docker`
 
 # Instalar proyecto 
 * dentro del RPI: `git clone https://github.com/abertuccio/pi-server.git`

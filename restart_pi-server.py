@@ -16,7 +16,7 @@ print("Errores: ",errs)
 print("Esperamos 20 segudos para intentar telebit")
 time.sleep(20)
 
-rpi_url = 'https://light-panda-16.telebit.io/status'
+rpi_url = 'https://stale-octopus-48.telebit.io/status'
 cantidad_maxima_intentos = 100
 
 while True:
@@ -38,14 +38,12 @@ while True:
         break
 
     if not cantidad_maxima_intentos:
+        print("Alcanzamos la máxima cantidad de intentos.")
         break
 
     print("Intentamos levantarlo")
-    # restartTunnel = './restart_telebit.sh'
-    # restartTunnel = ["sudo", "-u", "www-data", "-c", "'/home/pi/telebit restart'"]
-    # process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE,cwd="/home/pi/pi-server")
-
-    restartTunnel = "/home/pi/pi-server/restart_telebit.sh"
+    restartTunnel = ['/home/pi/telebit restart']
+    # process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE,cwd="/home/pi")
     process = subprocess.Popen(restartTunnel.split(), stdout=subprocess.PIPE)
 
 

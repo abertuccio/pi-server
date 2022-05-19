@@ -1,1 +1,0 @@
-sudo -u pi bash -c '/home/pi/telebit restart'
