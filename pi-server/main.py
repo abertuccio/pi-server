@@ -1,3 +1,4 @@
+from flask_cors import CORS, cross_origin
 from flask import Flask,request,jsonify
 from errores.errores import *
 from status import *
@@ -9,12 +10,16 @@ import time
 import json
 
 app = Flask(__name__, static_folder='app/static',)
+CORS(app)
+app.config['CORS_HEADERS'] = 'application/json'
 
 @app.route("/")
+@cross_origin()
 def main():
     return "El server RPI funciona correctamente"
 
 @app.route("/status")
+@cross_origin()
 def status_fn():    
     stat = {}
     stat["server"] = "El server RPI funciona correctamente"
@@ -22,12 +27,14 @@ def status_fn():
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/armar")
+@cross_origin()
 def armar_fn():
     stat = {}
     stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/desarmar")
+@cross_origin()
 def desarmar_fn():
     stat = {}
     stat["server"] = desarmar()

@@ -3,3 +3,4 @@ requests
 pyotp
 rpi.gpio
 tinydb
+flask-cors
