@@ -24,6 +24,7 @@ def status_fn():
     stat = {}
     stat["server"] = "El server RPI funciona correctamente"
     stat["abertura_abierta"] = status_aberturas()
+    stat["status_alarma"] = getStatusAlarma()
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/armar")
