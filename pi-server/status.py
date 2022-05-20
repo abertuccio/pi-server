@@ -10,7 +10,7 @@ def setStatusAlarma(status):
     db = TinyDB('/app/db/db.json')
     db.update({"status_alarma":status})
 
-def setStatusAlarma():    
+def getStatusAlarma():    
     db = TinyDB('/app/db/db.json')
     return db.all()[0]['status_alarma']
 
