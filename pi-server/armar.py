@@ -8,7 +8,7 @@ import time
 def desarmar():
     setDebeSonarAlarma(False)
 
-    time.sleep(2)
+    time.sleep(5)
 
     setStatusAlarma("NO_ARMADO")
 
@@ -46,7 +46,7 @@ def verifica_apertura(intervalo):
                 break
             abertura_abierta = status_aberturas()
             if abertura_abierta:
-                notificar_status("APERTURA")
+                # notificar_status("APERTURA")
                 enciendeSirena()
             time.sleep(intervalo)
 
@@ -55,6 +55,10 @@ def armar():
     setDebeSonarAlarma(True)
 
     abertura_abierta = status_aberturas()
+
+    if getStatusAlarma() == "ARMADO":
+        res = notificar_status("ARMADO")
+    return res
 
     if abertura_abierta:
         res = notificar_status("INTENTO_ARMADO_FALLIDO")

@@ -81,7 +81,7 @@ def notificar_status(estado):
         t = threading.Thread(target=aviso_de_luces, args=(False,True,0,))
         t.start()
 
-        return("Está todo cerrado, se puede iniciar la alarma")
+        return("Está todo cerrado, se inicia la alarma.")
     
 
     def intento_armado_fallido():
@@ -99,7 +99,7 @@ def notificar_status(estado):
         t = threading.Thread(target=aviso_de_luces, args=(True,False,5,))
         t.start()
 
-        requests.get(telegram_URL+'&text=Se abrió una abertura')
+        # requests.get(telegram_URL+'&text=Se abrió una abertura')
 
         return("Hubo una apertura.")
 
