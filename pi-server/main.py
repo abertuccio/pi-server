@@ -13,12 +13,12 @@ app = Flask(__name__, static_folder='app/static',)
 CORS(app)
 app.config['CORS_HEADERS'] = 'application/json'
 
-@app.route("/")
+@app.route("/", methods = ['GET'])
 @cross_origin()
 def main():
     return "El server RPI funciona correctamente"
 
-@app.route("/status")
+@app.route("/status", methods = ['GET'])
 @cross_origin()
 def status_fn():    
     stat = {}
@@ -27,26 +27,33 @@ def status_fn():
     stat["status_alarma"] = getStatusAlarma()
     return {"status":"Ok","respuesta":stat}
 
-@app.route("/armar")
+@app.route("/login", methods = ['POST'])
+@cross_origin()
+def login_fn():
+    content = request.json
+    return content
+
+
+@app.route("/armar", methods = ['GET'])
 @cross_origin()
 def armar_fn():
     stat = {}
     stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
 
-@app.route("/desarmar")
+@app.route("/desarmar", methods = ['GET'])
 @cross_origin()
 def desarmar_fn():
     stat = {}
     stat["server"] = desarmar()
     return {"status":"Ok","respuesta":stat}
 
-@app.route("/qr")
-def qr():
+@app.route("/qr", methods = ['GET'])
+def qr_fn():
     return getQr()
 
-@app.route("/totp")
-def totp():
+@app.route("/totp", methods = ['GET'])
+def totp_fn():
     return getTotp()
 
 @app.errorhandler(Error)

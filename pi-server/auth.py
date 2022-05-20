@@ -1,6 +1,8 @@
 from errores.errores import *
 import pyotp
 import time
+import os
+
 
 
 def html(url):
@@ -24,11 +26,11 @@ def html(url):
 
 
 def getQr():
-    url = pyotp.totp.TOTP('JBSWY3DPEHPK3PXP').provisioning_uri(
+    url = pyotp.totp.TOTP(os.environ['HASH_EMPAREJAMIENTO']).provisioning_uri(
         issuer_name='ALARMA')
     return(html(url))
 
 
-def getTotp(usuarioSecret, param):
-    totp = pyotp.TOTP(usuarioSecret)
+def getTotp():
+    totp = pyotp.TOTP(os.environ['HASH_EMPAREJAMIENTO'])
     return("Current OTP:" + totp.now() + " " + hora)
