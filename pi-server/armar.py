@@ -44,7 +44,7 @@ def verifica_apertura(intervalo):
                 break
             abertura_abierta = status_aberturas()
             if abertura_abierta:
-                # notificar_status("APERTURA")
+                notificar_status("APERTURA")
                 enciendeSirena()
             time.sleep(intervalo)
 

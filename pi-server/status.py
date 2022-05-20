@@ -4,6 +4,8 @@ import threading
 import requests
 import time
 
+telegram_URL="https://api.telegram.org/bot1384549867:AAEx0kR6bAulP6Rnd3_8w0RqMQL9gmDbpDo/sendMessage?chat_id=1072327243"
+
 def getDdebe_sonar_alarma():    
     db = TinyDB('/app/db/db.json')
     return db.all()[0]['debe_sonar_alarma']
@@ -54,10 +56,14 @@ def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
 
         if segundos:
             time.sleep(segundos)
-            GPIO.cleanup()
+            # GPIO.cleanup()
         else:
             time.sleep(1200)
-            GPIO.cleanup()
+            # GPIO.cleanup()
+
+        # Apagamos todo
+        GPIO.output(VERIFICACION, GPIO.LOW)
+        GPIO.output(TODO_CERRADO, GPIO.LOW)
 
         return
 
@@ -85,7 +91,7 @@ def notificar_status(estado):
         t = threading.Thread(target=aviso_de_luces, args=(True,False,5,))
         t.start()
 
-        # Enviar mensaje
+        requests.get(telegram_URL+'&text=Se abrió una abertura')
 
         return("Hubo una apertura.")
 
