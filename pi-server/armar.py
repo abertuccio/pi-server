@@ -10,6 +10,8 @@ def desarmar():
 
     time.sleep(2)
 
+    setStatusAlarma("NO_ARMADO")
+
     return apagaSirena()
 
 def apagaSirena():
