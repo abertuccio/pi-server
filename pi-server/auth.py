@@ -63,8 +63,8 @@ def login(parametros):
         raise Error(
             'No se enviaron los parámetros mínimos de autenticación.')
 
-    if parametros["hash_server"] != hash_server:
-        raise Error('No es una ubicación permitida para hacer login.')
+    # if parametros["hash_server"] != hash_server:
+    #     raise Error('No es una ubicación permitida para hacer login.')
 
     db = TinyDB('/app/db/usuarios.json')
     Usuario = Query()
