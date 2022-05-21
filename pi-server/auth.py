@@ -52,6 +52,17 @@ def generarToken():
 
     return {"token": token, "tiempo": segundos_validez_token}
 
+def validarToken(token):
+    db = TinyDB('/app/db/usuarios.json')
+    Usuario = Query()
+
+    usuarioDBD = db.get(Usuario.token == token.token)
+
+    if usuarioDBD:
+        ahora = int(time.time())
+        if ahora < usuarioDBD.token.tiempo:
+            return True
+    return False
 
 def login(parametros):
 

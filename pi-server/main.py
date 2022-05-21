@@ -20,7 +20,13 @@ def main():
 
 @app.route("/status", methods = ['GET'])
 @cross_origin()
-def status_fn():    
+def status_fn():
+    token = request.args.get('token', default = False, type = bool)
+    if not token:
+        raise Error('No se enviaron los parámetros mínimos de autenticación.')
+    if not validarToken(token):
+        raise Error('Debe volver a loguearse.')
+
     stat = {}
     stat["server"] = "El server RPI funciona correctamente"
     stat["abertura_abierta"] = status_aberturas()
@@ -37,6 +43,11 @@ def login_fn():
 @app.route("/armar", methods = ['GET'])
 @cross_origin()
 def armar_fn():
+    token = request.args.get('token', default = False)
+    if not token:
+        raise Error('No se enviaron los parámetros mínimos de autenticación.')
+    if not validarToken(token):
+        raise Error('Debe volver a loguearse.')
     stat = {}
     stat["server"] = armar()
     return {"status":"Ok","respuesta":stat}
@@ -44,17 +55,22 @@ def armar_fn():
 @app.route("/desarmar", methods = ['GET'])
 @cross_origin()
 def desarmar_fn():
+    token = request.args.get('token', default = False)
+    if not token:
+        raise Error('No se enviaron los parámetros mínimos de autenticación.')
+    if not validarToken(token):
+        raise Error('Debe volver a loguearse.')
     stat = {}
     stat["server"] = desarmar()
     return {"status":"Ok","respuesta":stat}
 
-@app.route("/qr", methods = ['GET'])
-def qr_fn():
-    return getQr()
+# @app.route("/qr", methods = ['GET'])
+# def qr_fn():
+#     return getQr()
 
-@app.route("/totp", methods = ['GET'])
-def totp_fn():
-    return getTotp()
+# @app.route("/totp", methods = ['GET'])
+# def totp_fn():
+#     return getTotp()
 
 @app.errorhandler(Error)
 def handle_invalid_usage(error):
