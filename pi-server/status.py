@@ -7,19 +7,19 @@ import time
 telegram_URL="https://api.telegram.org/bot1384549867:AAEx0kR6bAulP6Rnd3_8w0RqMQL9gmDbpDo/sendMessage?chat_id=1072327243"
 
 def setStatusAlarma(status):
-    db = TinyDB('/app/db/db.json')
+    db = TinyDB('/app/db/status.json')
     db.update({"status_alarma":status})
 
 def getStatusAlarma():    
-    db = TinyDB('/app/db/db.json')
+    db = TinyDB('/app/db/status.json')
     return db.all()[0]['status_alarma']
 
 def getDdebe_sonar_alarma():    
-    db = TinyDB('/app/db/db.json')
+    db = TinyDB('/app/db/status.json')
     return db.all()[0]['debe_sonar_alarma']
 
 def setDebeSonarAlarma(par):
-    db = TinyDB('/app/db/db.json')
+    db = TinyDB('/app/db/status.json')
     db.update({"debe_sonar_alarma":bool(par)})
 
 def status_aberturas():
