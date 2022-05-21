@@ -1,3 +1,4 @@
 conf/CONF.env
 __pycache__/
 pi-server/db/db.json
+pi-server/db/usuarios.json

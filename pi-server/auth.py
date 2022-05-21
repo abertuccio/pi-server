@@ -1,5 +1,6 @@
 from tinydb import TinyDB, Query
 from errores.errores import *
+import hashlib
 import pyotp
 import time
 import os
