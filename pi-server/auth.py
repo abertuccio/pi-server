@@ -56,7 +56,7 @@ def validarToken(token):
     db = TinyDB('/app/db/usuarios.json')
     Usuario = Query()
 
-    usuarioDBD = db.get(Usuario.token == token.token)
+    usuarioDBD = db.get(Usuario.token.token == token)
 
     if usuarioDBD:
         ahora = int(time.time())
