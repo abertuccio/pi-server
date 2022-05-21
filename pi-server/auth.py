@@ -60,7 +60,7 @@ def validarToken(token):
 
     if usuarioDBD:
         ahora = int(time.time())
-        if ahora < usuarioDBD.token.tiempo:
+        if ahora < usuarioDBD["token"]["tiempo"]:
             return True
     return False
 
