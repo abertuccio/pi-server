@@ -38,13 +38,15 @@ def getTotp():
 
 def generarToken():
 
+    minutos_validez_token_defecto = 20
+
     mt = str(round(time.time() * 1000))
 
     random = str(os.urandom(44).hex())
 
     token = hashlib.sha512( str( mt +  random).encode("utf-8") ).hexdigest()
 
-    segundos_validez_token = int(time.time()) + (self.minutos_validez_token_defecto * 60)
+    segundos_validez_token = int(time.time()) + (minutos_validez_token_defecto * 60)
 
     return {"token":token,"tiempo":segundos_validez_token}
 
@@ -75,4 +77,4 @@ def login(parametros):
 
     db.update({'token': token}, Usuario.usuario == parametros["usuario"])  
 
-    return {"token":token}
+    return {"respuesta":token,"status":"Ok"}
