@@ -21,7 +21,7 @@ def main():
 @app.route("/status", methods = ['GET'])
 @cross_origin()
 def status_fn():
-    token = request.args.get('token', default = False, type = bool)
+    token = request.args.get('token', default = False)
     if not token:
         raise Error('No se enviaron los parámetros mínimos de autenticación.')
     if not validarToken(token):
