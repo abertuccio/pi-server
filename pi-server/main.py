@@ -31,7 +31,7 @@ def status_fn():
 @cross_origin()
 def login_fn():
     content = request.json
-    return content
+    return login(parametros)
 
 
 @app.route("/armar", methods = ['GET'])
