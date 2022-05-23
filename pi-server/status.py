@@ -47,6 +47,8 @@ def aviso_de_luces(estado, segundos=0):
 
         GPIO.setmode(GPIO.BCM)
 
+        GPIO.cleanup()
+
         NO_ARMADO = 12
         GPIO.setup(NO_ARMADO, GPIO.OUT)
 
