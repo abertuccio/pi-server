@@ -54,9 +54,9 @@ def aviso_de_luces(estado, segundos=0):
         GPIO.setup(APERTURA, GPIO.OUT)
 
         # Apagamos todo
-        GPIO.output(NO_ARMADO, GPIO.LOW)
-        GPIO.output(ARMADO, GPIO.LOW)
-        GPIO.output(APERTURA, GPIO.LOW)
+        # GPIO.output(NO_ARMADO, GPIO.LOW)
+        # GPIO.output(ARMADO, GPIO.LOW)
+        # GPIO.output(APERTURA, GPIO.LOW)
          
         if estado == "ARMADO":
             GPIO.output(ARMADO, GPIO.HIGH)
@@ -71,9 +71,10 @@ def aviso_de_luces(estado, segundos=0):
             time.sleep(3000) # <- Máximo de tiempo
 
         # Apagamos todo
-        GPIO.output(NO_ARMADO, GPIO.LOW)
-        GPIO.output(ARMADO, GPIO.LOW)
-        GPIO.output(APERTURA, GPIO.LOW)
+        # GPIO.output(NO_ARMADO, GPIO.LOW)
+        # GPIO.output(ARMADO, GPIO.LOW)
+        # GPIO.output(APERTURA, GPIO.LOW)
+        GPIO.cleanup()
 
         return
 
