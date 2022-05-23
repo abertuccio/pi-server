@@ -47,7 +47,7 @@ def aviso_de_luces(estado, segundos=0):
         NO_ARMADO = 12
         GPIO.setup(NO_ARMADO, GPIO.OUT)
 
-        ARMADO = 5
+        ARMADO = 6
         GPIO.setup(ARMADO, GPIO.OUT)
 
         APERTURA = 26
