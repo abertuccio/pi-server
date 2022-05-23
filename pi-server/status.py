@@ -34,51 +34,54 @@ def status_aberturas():
 
     abertura_abierta = bool(GPIO.input(INPUT_ABERTURA_1))
 
-    # GPIO.cleanup()
-
     return abertura_abierta
 
-def aviso_de_luces(verificacion=False,todo_cerrado=False, segundos=0):
+def aviso_de_luces(estado, segundos=0):
+
+        # AZUL/BLANCO -> ARMADO
+        # VERDE -> NO ARMADO
+        # ROJO -> APERTURA/INTENTO_ARMADO_FALLIDO
 
         GPIO.setmode(GPIO.BCM)
 
-        TODO_CERRADO = 12
-        GPIO.setup(TODO_CERRADO, GPIO.OUT)
+        NO_ARMADO = 12
+        GPIO.setup(NO_ARMADO, GPIO.OUT)
 
-        VERIFICACION = 26
-        GPIO.setup(VERIFICACION, GPIO.OUT)
+        ARMADO = 5
+        GPIO.setup(ARMADO, GPIO.OUT)
+
+        APERTURA = 26
+        GPIO.setup(APERTURA, GPIO.OUT)
 
         # Apagamos todo
-        GPIO.output(VERIFICACION, GPIO.LOW)
-        GPIO.output(TODO_CERRADO, GPIO.LOW)
-        
-        if verificacion:
-            GPIO.output(VERIFICACION, GPIO.HIGH)
-        else:
-            GPIO.output(VERIFICACION, GPIO.LOW)
-
-        if todo_cerrado:
-            GPIO.output(TODO_CERRADO, GPIO.HIGH)
-        else:
-            GPIO.output(TODO_CERRADO, GPIO.LOW)
+        GPIO.output(NO_ARMADO, GPIO.LOW)
+        GPIO.output(ARMADO, GPIO.LOW)
+        GPIO.output(APERTURA, GPIO.LOW)
+         
+        if estado == "ARMADO":
+            GPIO.output(ARMADO, GPIO.HIGH)
+        if estado == "NO_ARMADO":
+            GPIO.output(NO_ARMADO, GPIO.HIGH)
+        if estado == "INTENTO_ARMADO_FALLIDO" or "APERTURA":
+            GPIO.output(APERTURA, GPIO.HIGH)
 
         if segundos:
             time.sleep(segundos)
-            # GPIO.cleanup()
         else:
-            time.sleep(1200)
-            # GPIO.cleanup()
+            time.sleep(3000) # <- Máximo de tiempo
 
         # Apagamos todo
-        GPIO.output(VERIFICACION, GPIO.LOW)
-        GPIO.output(TODO_CERRADO, GPIO.LOW)
+        GPIO.output(NO_ARMADO, GPIO.LOW)
+        GPIO.output(ARMADO, GPIO.LOW)
+        GPIO.output(APERTURA, GPIO.LOW)
 
         return
 
 def notificar_status(estado):
 
     def armado():
-        t = threading.Thread(target=aviso_de_luces, args=(False,True,0,))
+
+        t = threading.Thread(target=aviso_de_luces, args=("ARMADO",0,))
         t.start()
 
         return("Está todo cerrado, se inicia la alarma.")
@@ -86,17 +89,21 @@ def notificar_status(estado):
 
     def intento_armado_fallido():
 
-        t = threading.Thread(target=aviso_de_luces, args=(True,False,5,))
+        t = threading.Thread(target=aviso_de_luces, args=("INTENTO_ARMADO_FALLIDO",30,))
         t.start()
 
         return("No está todo cerrado, cierre todo antes de iniciar la alarma.")    
 
-    def no_armado():        
+    def no_armado():
+
+        t = threading.Thread(target=aviso_de_luces, args=("NO_ARMADO",0,))
+        t.start()
+
         return("no armado")
 
     def hubo_una_apertura():
 
-        t = threading.Thread(target=aviso_de_luces, args=(True,False,5,))
+        t = threading.Thread(target=aviso_de_luces, args=("APERTURA",0,))
         t.start()
 
         # requests.get(telegram_URL+'&text=Se abrió una abertura')
