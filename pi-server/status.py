@@ -12,7 +12,9 @@ def setStatusAlarma(status):
 
 def getStatusAlarma():    
     db = TinyDB('/app/db/status.json')
-    return db.all()[0]['status_alarma']
+    status = db.all()[0]['status_alarma']
+    aviso_de_luces(status, segundos=30)
+    return status
 
 def getDdebe_sonar_alarma():    
     db = TinyDB('/app/db/status.json')
