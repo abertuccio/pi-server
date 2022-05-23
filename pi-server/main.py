@@ -16,14 +16,13 @@ app.config['CORS_HEADERS'] = 'application/json'
 @app.route("/", methods = ['GET'])
 @cross_origin()
 def main():
-    return "El server RPI funciona correctamente"
+    return {"status":"Ok","respuesta":"El server RPI funciona correctamente"}
 
 @app.route("/status", methods = ['GET'])
 @cross_origin()
 def status_fn():
     token = request.args.get('token', default = False)
-    if not token:
-        raise Error('No se enviaron los parámetros mínimos de autenticación.')
+    
     if not validarToken(token):
         raise Error('Debe volver a loguearse.')
 
@@ -31,37 +30,40 @@ def status_fn():
     stat["server"] = "El server RPI funciona correctamente"
     stat["abertura_abierta"] = status_aberturas()
     stat["status_alarma"] = getStatusAlarma()
+
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/login", methods = ['POST'])
 @cross_origin()
 def login_fn():
     content = request.json
-    return login(content)
 
+    return login(content)
 
 @app.route("/armar", methods = ['GET'])
 @cross_origin()
 def armar_fn():
     token = request.args.get('token', default = False)
-    if not token:
-        raise Error('No se enviaron los parámetros mínimos de autenticación.')
+
     if not validarToken(token):
         raise Error('Debe volver a loguearse.')
+
     stat = {}
     stat["server"] = armar()
+
     return {"status":"Ok","respuesta":stat}
 
 @app.route("/desarmar", methods = ['GET'])
 @cross_origin()
 def desarmar_fn():
     token = request.args.get('token', default = False)
-    if not token:
-        raise Error('No se enviaron los parámetros mínimos de autenticación.')
+
     if not validarToken(token):
         raise Error('Debe volver a loguearse.')
+
     stat = {}
     stat["server"] = desarmar()
+
     return {"status":"Ok","respuesta":stat}
 
 # @app.route("/qr", methods = ['GET'])
@@ -76,12 +78,13 @@ def desarmar_fn():
 def handle_invalid_usage(error):
     response = jsonify(error.to_dict())
     response.status_code = error.status_code
+
     return response
 
 @app.after_request
 def after_request_func(response):
+
     return response
 
 if __name__ == "__main__":
-    # True para desarrollo unicamente
     app.run(host="0.0.0.0", debug=True, port=44306)
