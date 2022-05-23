@@ -13,7 +13,8 @@ def setStatusAlarma(status):
 def getStatusAlarma():    
     db = TinyDB('/app/db/status.json')
     status = db.all()[0]['status_alarma']
-    aviso_de_luces(status, segundos=30)
+    t = threading.Thread(target=aviso_de_luces, args=(status,30,))
+    t.start()
     return status
 
 def getDdebe_sonar_alarma():    
