@@ -74,7 +74,7 @@ def aviso_de_luces(estado, segundos=0):
         # GPIO.output(NO_ARMADO, GPIO.LOW)
         # GPIO.output(ARMADO, GPIO.LOW)
         # GPIO.output(APERTURA, GPIO.LOW)
-        GPIO.cleanup()
+        # GPIO.cleanup()
 
         return
 
