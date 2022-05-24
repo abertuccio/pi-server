@@ -13,12 +13,29 @@ app = Flask(__name__, static_folder='app/static',)
 CORS(app)
 app.config['CORS_HEADERS'] = 'application/json'
 
+hash_interno = "2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a"
+
 @app.route("/", methods = ['GET'])
 @cross_origin()
 def main():
     return {"status":"Ok","respuesta":"El server RPI funciona correctamente"}
 
 @app.route("/status", methods = ['GET'])
+@cross_origin()
+def status_interno_fn():
+    hash = request.args.get('hash', default = False)
+
+    if hash != hash_interno:
+        raise Error('Debe volver a loguearse.')
+
+    stat = {}
+    stat["server"] = "El server RPI funciona correctamente"
+    stat["abertura_abierta"] = "algo" # status_aberturas()
+    stat["status_alarma"] = getStatusAlarma()
+
+    return {"status":"Ok","respuesta":stat}
+
+@app.route("/status_interno", methods = ['GET'])
 @cross_origin()
 def status_fn():
     token = request.args.get('token', default = False)
@@ -57,7 +74,7 @@ def armar_fn():
 def armar_interno_fn():
     hash = request.args.get('hash', default = False)
 
-    if hash != "2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a":
+    if hash != hash_interno:
         raise Error('Debe volver a loguearse.')
 
     stat = {}
