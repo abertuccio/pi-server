@@ -56,9 +56,6 @@ def armar():
 
     abertura_abierta = status_aberturas()
 
-    if getStatusAlarma() == "ARMADO":
-        return notificar_status("ARMADO")
-
     if abertura_abierta:
         res = notificar_status("INTENTO_ARMADO_FALLIDO")
     else:

@@ -19,7 +19,7 @@ print(datetime.datetime.now()," Errores: ",errs)
 print(datetime.datetime.now()," Esperamos 20 segudos para intentar telebit")
 time.sleep(20)
 
-rpi_url = 'https://stale-octopus-48.telebit.io/status'
+rpi_url = 'https://stale-octopus-48.telebit.io/'
 cantidad_maxima_intentos = 30
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -40,7 +40,7 @@ requests.get(telegram_URL+'&text=Se reinicia RPI, IP: '+ip())
 while True:
     print(datetime.datetime.now()," Verificamos si el server está arriba")
     try:
-        r = requests.get(rpi_url, verify=False, timeout=5)
+        r = requests.get(rpi_url+'status', verify=False, timeout=5)
     except:
         pass
     cod = r.status_code
@@ -56,6 +56,14 @@ while True:
 
     if cod == 200 and res["status"] == 'Ok':
         requests.get(telegram_URL+'&text=El server de la alarma está operativo.')
+        if res['status_alarma'] == "ARMADO":
+            # Intentamos armar nuevamente
+            r = requests.get(rpi_url+'armar_interno?hash=2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a', verify=False, timeout=5)
+            res = r.json()
+            status_armar_server = "Hubo un error al armar"
+            if "respuesta" in res and "server" in res["respuesta"]:
+                status_armar_server = res["respuesta"]["server"]
+            requests.get(telegram_URL+'&text=Hubo un corte y se intentó armar. Respuesta del servidor: '+status_armar_server)   
         print(datetime.datetime.now()," Está funcionando")
         break
 

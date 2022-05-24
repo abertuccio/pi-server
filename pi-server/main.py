@@ -53,6 +53,18 @@ def armar_fn():
 
     return {"status":"Ok","respuesta":stat}
 
+@app.route("/armar_interno", methods = ['GET'])
+def armar_interno_fn():
+    hash = request.args.get('hash', default = False)
+
+    if hash != "2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a":
+        raise Error('Debe volver a loguearse.')
+
+    stat = {}
+    stat["server"] = armar()
+
+    return {"status":"Ok","respuesta":stat}
+
 @app.route("/desarmar", methods = ['GET'])
 @cross_origin()
 def desarmar_fn():
