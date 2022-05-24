@@ -20,7 +20,7 @@ hash_interno = "2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a
 def main():
     return {"status":"Ok","respuesta":"El server RPI funciona correctamente"}
 
-@app.route("/status", methods = ['GET'])
+@app.route("/status_interno", methods = ['GET'])
 @cross_origin()
 def status_interno_fn():
     hash = request.args.get('hash', default = False)
@@ -35,7 +35,7 @@ def status_interno_fn():
 
     return {"status":"Ok","respuesta":stat}
 
-@app.route("/status_interno", methods = ['GET'])
+@app.route("/status", methods = ['GET'])
 @cross_origin()
 def status_fn():
     token = request.args.get('token', default = False)
