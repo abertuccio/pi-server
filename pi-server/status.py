@@ -41,6 +41,8 @@ def status_aberturas():
 
 def aviso_de_luces(estado, segundos=0):
 
+        print("Duración del a luz: ",segundos)
+
         GPIO.setmode(GPIO.BCM)
 
         ARMADO = 6 # -> ARMADO -> AZUL/BLANCO
