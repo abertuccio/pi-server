@@ -43,7 +43,7 @@ def aviso_de_luces(estado, segundos=0):
 
         GPIO.setmode(GPIO.BCM)
 
-        # ARMADO = 6 # -> ARMADO -> AZUL/BLANCO
+        ARMADO = 6 # -> ARMADO -> AZUL/BLANCO
 
         NO_ARMADO = 12 # -> NO ARMADO -> VERDE
 
