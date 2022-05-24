@@ -47,8 +47,6 @@ def aviso_de_luces(estado, segundos=0):
 
         GPIO.setmode(GPIO.BCM)
 
-        # GPIO.cleanup()
-
         NO_ARMADO = 12
 
         ARMADO = 6
@@ -70,10 +68,7 @@ def aviso_de_luces(estado, segundos=0):
         else:
             time.sleep(3000) # <- Máximo de tiempo
 
-        # Apagamos todo
-        # GPIO.output(NO_ARMADO, GPIO.LOW)
-        # GPIO.output(ARMADO, GPIO.LOW)
-        # GPIO.output(APERTURA, GPIO.LOW)
+        # Apagamos todo        
         GPIO.cleanup()
 
         return
