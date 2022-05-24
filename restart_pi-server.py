@@ -57,8 +57,8 @@ while True:
 
     if cod == 200 and res["status"] == 'Ok':
         requests.get(telegram_URL+'&text=El server de la alarma está operativo.')
-        print(res['status_alarma'])
-        if res['status_alarma'] == "ARMADO":
+        print(res["respuesta"]['status_alarma'])
+        if res["respuesta"]['status_alarma'] == "ARMADO":
             # Intentamos armar nuevamente
             print("Se intenta armar")
             r = requests.get(rpi_url+'armar_interno?hash=2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a', verify=False, timeout=5)
