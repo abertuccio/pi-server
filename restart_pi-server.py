@@ -41,7 +41,7 @@ while True:
     print(datetime.datetime.now()," Verificamos si el server está arriba")
     cod = 500
     try:
-        r = requests.get(rpi_url+'status?hash=2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a', verify=False, timeout=5)
+        r = requests.get(rpi_url+'status_interno?hash=2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a', verify=False, timeout=5)
         cod = r.status_code
     except:
         pass
