@@ -68,8 +68,6 @@ def aviso_de_luces(estado, segundos=0):
         else:
             time.sleep(3000) # <- Máximo de tiempo
 
-        GPIO.output(NO_ARMADO, GPIO.LOW)
-
         # Apagamos todo        
         GPIO.cleanup()
 
