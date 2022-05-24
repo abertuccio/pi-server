@@ -53,6 +53,7 @@ def aviso_de_luces(estado, segundos=0):
         APERTURA = 26 # -> APERTURA/INTENTO_ARMADO_FALLIDO -> ROJO
          
         if estado == "ARMADO": # -> ARMADO -> AZUL/BLANCO
+            print("Suponemos que está armado")
             GPIO.setup(ARMADO, GPIO.OUT)
             GPIO.output(ARMADO, GPIO.HIGH)
         if estado == "NO_ARMADO": # -> NO ARMADO -> VERDE
