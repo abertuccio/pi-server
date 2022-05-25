@@ -8,7 +8,7 @@ b = TonalBuzzer(BUZZER)
 
 b.play(Tone("A3"))
 time.sleep(1)
-b.play(Tone("C4"))
+b.play(Tone("B4"))
 time.sleep(1)
 b.play(Tone("E4"))
 time.sleep(1)
