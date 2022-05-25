@@ -1,28 +1,13 @@
-import RPi.GPIO as GPIO
+from gpiozero import TonalBuzzer
+from gpiozero.tones import Tone
 import time
 
-pin = 4
+BUZZER = 4
 
-def setup():
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(pin, GPIO.OUT)
-    GPIO.output(pin, GPIO.HIGH) # HIGH should turn the buzzer off
+b = TonalBuzzer(BUZZER)
 
-def peep():
-    while True:
-        GPIO.output(pin, GPIO.LOW) # peep
-        time.sleep(1.0)
-        GPIO.output(pin, GPIO.HIGH) # should make the buzzer quiet
-        time.sleep(3.0)
+b.play(Tone(60))
 
-def tearDown():
-    GPIO.output(pin, GPIO.HIGH)
-    GPIO.cleanup()
+time.sleep(2)
 
-if __name__ == '__main__':
-    print('Peeping!')
-    setup()
-    try:
-        peep()
-    except KeyboardInterrupt:
-        tearDown()
+b.stop()
