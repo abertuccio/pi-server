@@ -11,6 +11,6 @@ time.sleep(1)
 b.play(Tone("B4"))
 time.sleep(0.7)
 b.play(Tone("E4"))
-time.sleep(0.7)
+time.sleep(0.4)
 
 b.stop()
