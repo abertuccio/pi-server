@@ -1,12 +1,26 @@
 import RPi.GPIO as GPIO
 import time
 
-BUZZER = 4
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(BUZZER, GPIO.OUT)
-GPIO.output(BUZZER, GPIO.HIGH)
+def setup():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(pin, GPIO.OUT)
+    GPIO.output(pin, GPIO.HIGH) # HIGH should turn the buzzer off
 
-time.sleep(1)
+def peep():
+    while True:
+        GPIO.output(pin, GPIO.LOW) # peep
+        time.sleep(1.0)
+        GPIO.output(pin, GPIO.HIGH) # should make the buzzer quiet
+        time.sleep(3.0)
 
-GPIO.output(BUZZER, GPIO.LOW)
-GPIO.cleanup()
+def tearDown():
+    GPIO.output(pin, GPIO.HIGH)
+    GPIO.cleanup()
+
+if __name__ == '__main__':
+    print('Peeping!')
+    setup()
+    try:
+        peep()
+    except KeyboardInterrupt:
+        tearDown()
