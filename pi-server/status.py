@@ -43,6 +43,7 @@ def status_aberturas():
     return abertura_abierta
 
 def aviso_sonoro(estado):
+    GPIO.setmode(GPIO.BCM)
     BUZZER = 4
     b = TonalBuzzer(BUZZER)
 
