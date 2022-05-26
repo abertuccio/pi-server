@@ -59,6 +59,7 @@ def aviso_sonoro(estado):
         b.play(Tone("A#3"))
         time.sleep(1)
         b.stop()
+
     if estado == "NO_ARMADO":        
         b.play(Tone("G4"))
         time.sleep(0.3)
@@ -73,22 +74,13 @@ def aviso_sonoro(estado):
         b.play(Tone("C5"))
         time.sleep(0.7)
         b.stop() 
+
     if estado == "INTENTO_ARMADO_FALLIDO":
-        b.play(Tone("A3"))
-        time.sleep(0.3)
-        b.stop()
-        time.sleep(1) 
-        b.play(Tone("A3"))
-        time.sleep(0.3)
-        b.stop() 
-    if estado == "APERTURA":
-        b.play(Tone("A3"))
-        time.sleep(0.3)
-        b.stop()
-        time.sleep(1) 
-        b.play(Tone("A3"))
-        time.sleep(0.3)
-        b.stop() 
+        for x in range(6):
+            b.play(Tone("A3"))
+            time.sleep(0.3)
+            b.stop()
+            time.sleep(1)
 
 
 def aviso_de_luces(estado, segundos=0):
