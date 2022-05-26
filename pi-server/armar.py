@@ -11,6 +11,7 @@ def desarmar():
     time.sleep(5)
 
     setStatusAlarma("NO_ARMADO")
+    aviso_sonoro("NO_ARMADO")
 
     return apagaSirena()
 
@@ -58,9 +59,11 @@ def armar():
 
     if abertura_abierta:
         res = notificar_status("INTENTO_ARMADO_FALLIDO")
+        aviso_sonoro("INTENTO_ARMADO_FALLIDO")
     else:
         res = notificar_status("ARMADO")
         t = threading.Thread(target=verifica_apertura, args=(0.2,))
         t.start()
+        aviso_sonoro("ARMADO")
 
     return res
