@@ -4,3 +4,4 @@ pyotp
 rpi.gpio
 tinydb
 flask-cors
+gpiozero
