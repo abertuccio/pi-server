@@ -46,6 +46,7 @@ def aviso_sonoro(estado):
 
     time.sleep(5)
 
+    GPIO.setmode(GPIO.BCM)
     GPIO.cleanup()
 
     BUZZER = 4
