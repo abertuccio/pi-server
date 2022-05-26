@@ -19,17 +19,16 @@ def getStatusAlarma():
         status = db.all()[0]['status_alarma']
     except:
         print("Hubo una falla al leer db")
-        # Read in the file
-        with open('/app/db/status.json', 'r') as file :
-            filedata = file.read()
+        
+        f = open('/app/db/status.json','r')
+        filedata = f.read()
+        f.close()
 
-        filedata = filedata.replace('^@', '')
-        filedata = filedata.replace('\n', '')
-        filedata = filedata.replace('\r', '')
-        filedata = filedata.replace('\t', '')
+        newdata = filedata.replace('^@', '')
 
-        with open('/app/db/status.json', 'w') as file:
-            file.write(filedata)
+        f = open('/app/db/status.json','w')
+        f.write(newdata)
+        f.close()
             
         db = TinyDB('/app/db/status.json')
         status = db.all()[0]['status_alarma']
