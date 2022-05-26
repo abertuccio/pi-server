@@ -10,4 +10,4 @@ for x in range(9):
     b.play(Tone("A3"))
     time.sleep(0.3)
     b.stop()
-    time.sleep(1)
+    time.sleep(0.8)
