@@ -15,7 +15,19 @@ def setStatusAlarma(status):
 def getStatusAlarma():    
     db = TinyDB('/app/db/status.json')
     # TODO: VER PORQUE SE CORROMPE EL ARCHIVO DE DB
-    status = db.all()[0]['status_alarma']
+    try:
+        status = db.all()[0]['status_alarma']
+    except:
+        print("Hubo una falla al leer db")
+        # Read in the file
+        with open('/app/db/status.json', 'r') as file :
+            filedata = file.read()
+
+        filedata = filedata.replace('^@', '')
+
+        with open('/app/db/status.json', 'w') as file:
+            file.write(filedata)
+
     t = threading.Thread(target=aviso_de_luces, args=(status,30,))
     t.start()
     return status
