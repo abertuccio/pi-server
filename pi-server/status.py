@@ -45,8 +45,16 @@ def status_aberturas():
 def aviso_sonoro(estado):
     BUZZER = 4
     b = TonalBuzzer(BUZZER)
-    if estado == "ARMADO":
+    if estado == "ARMADO": # 3 . . --
         b.play(Tone("A3"))
+        time.sleep(0.3)
+        b.stop()
+        time.sleep(1) 
+        b.play(Tone("A3"))
+        time.sleep(0.3)
+        b.stop()
+        time.sleep(1)
+        b.play(Tone("A#3"))
         time.sleep(1)
         b.stop()
     if estado == "NO_ARMADO":
