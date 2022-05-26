@@ -24,6 +24,9 @@ def getStatusAlarma():
             filedata = file.read()
 
         filedata = filedata.replace('^@', '')
+        filedata = filedata.replace('\n', '')
+        filedata = filedata.replace('\r', '')
+        filedata = filedata.replace('\t', '')
 
         with open('/app/db/status.json', 'w') as file:
             file.write(filedata)
