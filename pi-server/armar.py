@@ -25,7 +25,7 @@ def apagaSirena():
     GPIO.setup(RELAY_220, GPIO.OUT) 
     GPIO.output(RELAY_220, GPIO.LOW)
 
-    GPIO.cleanup()
+    # GPIO.cleanup()
     return "Alarma desarmada"
 
 def enciendeSirena(segundos = 30):
