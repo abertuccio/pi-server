@@ -76,11 +76,11 @@ def aviso_sonoro(estado):
         b.stop() 
 
     if estado == "INTENTO_ARMADO_FALLIDO":
-        for x in range(6):
+        for x in range(7):
             b.play(Tone("A3"))
-            time.sleep(0.3)
+            time.sleep(0.2)
             b.stop()
-            time.sleep(1)
+            time.sleep(0.8)
 
 
 def aviso_de_luces(estado, segundos=0):
