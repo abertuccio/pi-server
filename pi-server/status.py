@@ -29,7 +29,7 @@ def getStatusAlarma():
         newdata = filedata.replace('^@', '')
 
         f = open('/app/db/status.json','w')
-        f.write("pepe")
+        f.write('{"_default": {"1": {"debe_sonar_alarma": true, "status_alarma": "ARMADO"}}}')
         f.close()
             
         db = TinyDB('/app/db/status.json')
