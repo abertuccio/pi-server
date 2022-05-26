@@ -44,10 +44,10 @@ def status_aberturas():
 
 def aviso_sonoro(estado):
 
-    time.sleep(5)
+    # time.sleep(5)
 
-    GPIO.setmode(GPIO.BCM)
-    GPIO.cleanup()
+    # GPIO.setmode(GPIO.BCM)
+    # GPIO.cleanup()
 
     BUZZER = 4
     b = TonalBuzzer(BUZZER)
@@ -87,6 +87,7 @@ def aviso_sonoro(estado):
             time.sleep(0.2)
             b.stop()
             time.sleep(0.8)
+    close()
 
 
 def aviso_de_luces(estado, segundos=0):
