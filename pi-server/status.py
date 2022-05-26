@@ -28,6 +28,8 @@ def getStatusAlarma():
         with open('/app/db/status.json', 'w') as file:
             file.write(filedata)
 
+        status = db.all()[0]['status_alarma']
+
     t = threading.Thread(target=aviso_de_luces, args=(status,30,))
     t.start()
     return status
