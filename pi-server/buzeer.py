@@ -6,8 +6,8 @@ BUZZER = 4
 
 b = TonalBuzzer(BUZZER)
 
-for x in range(9):
+for x in range(8):
     b.play(Tone("A3"))
-    time.sleep(0.3)
+    time.sleep(0.2)
     b.stop()
     time.sleep(0.8)
