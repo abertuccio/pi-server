@@ -6,7 +6,7 @@ import threading
 import requests
 import time
 
-telegram_URL="https://api.telegram.org/bot1384549867:AAEx0kR6bAulP6Rnd3_8w0RqMQL9gmDbpDo/sendMessage?chat_id=1072327243"
+telegram_URL=""
 
 def setStatusAlarma(status):
     db = TinyDB('/app/db/status.json')
