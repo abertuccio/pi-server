@@ -120,18 +120,28 @@ def aviso_de_luces(estado, segundos=0):
         NO_ARMADO = 19 # -> NO ARMADO -> VERDE
 
         APERTURA = 12 # -> APERTURA/INTENTO_ARMADO_FALLIDO -> ROJO
+        
+        GPIO.setup(ARMADO, GPIO.OUT)
+        GPIO.setup(NO_ARMADO, GPIO.OUT)
+        GPIO.setup(APERTURA, GPIO.OUT)
          
         if estado == "ARMADO": # -> ARMADO -> AZUL/BLANCO
             print("Notificación de Armado")
-            GPIO.setup(ARMADO, GPIO.OUT)
+            # GPIO.output(ARMADO,GPIO.HIGH)
+            GPIO.output(NO_ARMADO,GPIO.HIGH)
+            GPIO.output(APERTURA,GPIO.HIGH)
             GPIO.output(ARMADO, GPIO.LOW)
         if estado == "NO_ARMADO": # -> NO ARMADO -> VERDE
             print("Notificación de Desarmado")
-            GPIO.setup(NO_ARMADO, GPIO.OUT)
+            GPIO.output(ARMADO,GPIO.HIGH)
+            # GPIO.output(NO_ARMADO,GPIO.HIGH)
+            GPIO.output(APERTURA,GPIO.HIGH)
             GPIO.output(NO_ARMADO, GPIO.LOW)
         if estado == "INTENTO_ARMADO_FALLIDO" or estado == "APERTURA": # -> APERTURA/INTENTO_ARMADO_FALLIDO -> ROJO
             print("Notificación de apertura")
-            GPIO.setup(APERTURA, GPIO.OUT)
+            GPIO.output(ARMADO,GPIO.HIGH)
+            GPIO.output(NO_ARMADO,GPIO.HIGH)
+            # GPIO.output(APERTURA,GPIO.HIGH)
             GPIO.output(APERTURA, GPIO.LOW)
 
         if segundos:
