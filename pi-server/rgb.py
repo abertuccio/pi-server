@@ -8,8 +8,8 @@ LED_VERDE = 6
 LED_VERDE = 26
 
 GPIO.setup(LED_ROJO, GPIO.OUT)
-GPIO.output(LED_ROJO, GPIO.HIGH)
-time.sleep(2)
 GPIO.output(LED_ROJO, GPIO.LOW)
+time.sleep(2)
+GPIO.output(LED_ROJO, GPIO.HIGH)
 
 GPIO.cleanup()
