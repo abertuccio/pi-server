@@ -1,8 +1,6 @@
 #libraries
 import RPi.GPIO as GPIO
 from time import sleep
-#disable warnings (optional)
-GPIO.setwarnings(False)
 #Select GPIO Mode
 GPIO.setmode(GPIO.BCM)
 #set red,green and blue pins
@@ -53,21 +51,3 @@ def lightBlue():
     GPIO.output(redPin,GPIO.HIGH)
     GPIO.output(greenPin,GPIO.LOW)
     GPIO.output(bluePin,GPIO.LOW)
-    
-while True:
-    turnOff()
-    sleep(1) #1second
-    white()
-    sleep(1)
-    red()
-    sleep(1)
-    green()
-    sleep(1)
-    blue()
-    sleep(1)
-    yellow()
-    sleep(1)
-    purple()
-    sleep(1)
-    lightBlue()
-    sleep(1)
