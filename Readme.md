@@ -51,6 +51,7 @@
     * Si hubiera que actualizar el código (habiendolo cambiado) conviene borrar todo y hacer clone de nuevo
 * Crear Archivo `> /home/pi/pi-server/conf/CONF.env`
     * Crear variable `TELEGRAM_URL` con el contenido que corresponda
+    * Crear archivos de db `pi-server/db/status.json` y `pi-server/db/usuarios.json`
 `cd pi-server && sudo chmod +x inicio.sh`
 `sudo ./inicio.sh`_
 
