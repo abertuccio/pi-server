@@ -69,18 +69,19 @@ def aviso_sonoro(estado):
     # GPIO.cleanup()
 
     BUZZER = 4
-    b = TonalBuzzer(BUZZER)
+    b = TonalBuzzer(BUZZER)    
 
-    b.play(Tone("A3"))
-    time.sleep(0.3)
-    b.stop()
-    time.sleep(1) 
-    b.play(Tone("A3"))
-    time.sleep(0.3)
-    b.stop()
-    time.sleep(1)
+    if estado == "ARMADO": 
 
-    if estado == "ARMADO":        
+        b.play(Tone("A3"))
+        time.sleep(0.3)
+        b.stop()
+        time.sleep(1) 
+        b.play(Tone("A3"))
+        time.sleep(0.3)
+        b.stop()
+        time.sleep(1)
+
         b.play(Tone("A#3"))
         time.sleep(1)
         b.stop()
@@ -103,6 +104,16 @@ def aviso_sonoro(estado):
         b.stop() 
 
     if estado == "INTENTO_ARMADO_FALLIDO":
+
+        b.play(Tone("A3"))
+        time.sleep(0.3)
+        b.stop()
+        time.sleep(1) 
+        b.play(Tone("A3"))
+        time.sleep(0.3)
+        b.stop()
+        time.sleep(1)
+
         for x in range(7):
             b.play(Tone("A3"))
             time.sleep(0.2)
