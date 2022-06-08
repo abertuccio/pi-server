@@ -3,7 +3,16 @@ import requests
 import time
 import subprocess
 import datetime
+import os
 
+conf_env = {}
+
+with open('conf/CONF.env', 'r') as fh:        
+    for line in fh.readlines(): 
+        if not line.startswith('#'):
+                var = line.replace('\n', '').split('=',1)
+                if len(var) == 2:
+                    conf_env[var[0]]=var[1]
 
 path_telebid = '/home/pi/'
 
@@ -33,7 +42,7 @@ def ip():
     return ip
 
 
-telegram_URL=""
+telegram_URL=conf_env['TELEGRAM_URL']
 
 requests.get(telegram_URL+'&text=Se reinicia RPI, IP: '+ip())
 
