@@ -49,7 +49,8 @@
 * dentro del RPI: `git clone https://github.com/abertuccio/pi-server.git`
     * Para actualizar el código `git pull`
     * Si hubiera que actualizar el código (habiendolo cambiado) conviene borrar todo y hacer clone de nuevo
-* Crear Archivo `> /home/pi/pi-server/conf/CONF.env` 
+* Crear Archivo `> /home/pi/pi-server/conf/CONF.env`
+    * Crear variable `TELEGRAM_URL` con el contenido que corresponda
 `cd pi-server && sudo chmod +x inicio.sh`
 `sudo ./inicio.sh`_
 

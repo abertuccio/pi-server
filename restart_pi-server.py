@@ -7,7 +7,7 @@ import os
 
 conf_env = {}
 
-with open('conf/CONF.env', 'r') as fh:        
+with open('/home/pi/pi-server/conf/CONF.env', 'r') as fh:        
     for line in fh.readlines(): 
         if not line.startswith('#'):
                 var = line.replace('\n', '').split('=',1)
