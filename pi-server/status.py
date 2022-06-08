@@ -51,7 +51,7 @@ def status_aberturas():
 
     GPIO.setmode(GPIO.BCM)
 
-    INPUT_ABERTURA_1 = 18
+    INPUT_ABERTURA_1 = 20
     GPIO.setup(INPUT_ABERTURA_1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     OUTPUT_ABERTURA = 21 
