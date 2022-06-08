@@ -8,20 +8,11 @@ b = TonalBuzzer(BUZZER)
 
 b.play(Tone("D4"))
 time.sleep(0.2)
-# b.stop()
 b.play(Tone("B3"))
 time.sleep(0.7)
-
-b.stop()
-time.sleep(0.1)
-
 b.play(Tone("D4"))
 time.sleep(0.2)
 b.play(Tone("C#4"))
-
-b.stop()
-time.sleep(0.1)
-
 time.sleep(0.7)
 b.play(Tone("D4"))
 time.sleep(0.2)
