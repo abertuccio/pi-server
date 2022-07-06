@@ -49,7 +49,9 @@ def verifica_apertura(intervalo):
             abertura_abierta = status_aberturas()
             if abertura_abierta:
                 notificar_status("APERTURA")
-                enciendeSirena()
+                enciendeSirena(2)
+                time.sleep(30)
+                enciendeSirena(1800)
             time.sleep(intervalo)
 
 def armar():
