@@ -39,7 +39,7 @@ def enciendeSirena(segundos = 30):
     GPIO.setup(RELAY_220, GPIO.OUT)        
     GPIO.output(RELAY_220, GPIO.HIGH)
     time.sleep(segundos)
-    # apagaSirena()
+    apagaSirena()
 
 def verifica_apertura(intervalo):
         while True:
