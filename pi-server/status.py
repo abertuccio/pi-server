@@ -163,7 +163,11 @@ def aviso_de_luces(estado, segundos=0):
             time.sleep(3000) # <- Máximo de tiempo
 
         # Apagamos todo
+
+        # Al parecer hay que setear todo de nuevo porque quizá hubo un cleanup en el medio
         
+        GPIO.setmode(GPIO.BCM)
+
         GPIO.setup(ARMADO, GPIO.OUT)
         GPIO.setup(NO_ARMADO, GPIO.OUT)
         GPIO.setup(APERTURA, GPIO.OUT)
@@ -172,7 +176,7 @@ def aviso_de_luces(estado, segundos=0):
         GPIO.output(NO_ARMADO,GPIO.HIGH)
         GPIO.output(APERTURA,GPIO.HIGH)        
         
-        GPIO.cleanup()
+        # GPIO.cleanup()
 
         return
 
