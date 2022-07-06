@@ -163,6 +163,11 @@ def aviso_de_luces(estado, segundos=0):
             time.sleep(3000) # <- Máximo de tiempo
 
         # Apagamos todo
+        
+        GPIO.setup(ARMADO, GPIO.OUT)
+        GPIO.setup(NO_ARMADO, GPIO.OUT)
+        GPIO.setup(APERTURA, GPIO.OUT)
+
         GPIO.output(ARMADO,GPIO.HIGH)
         GPIO.output(NO_ARMADO,GPIO.HIGH)
         GPIO.output(APERTURA,GPIO.HIGH)        

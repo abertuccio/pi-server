@@ -73,6 +73,7 @@ def armarAlarma():
                 enciendeSirena(2)
                 time.sleep(30)
                 enciendeSirena(1800)
+                break
             else:
                 print('Todo cerrado')
             time.sleep(0.2) # Tiempo cada cuando se verifica
