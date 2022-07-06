@@ -61,7 +61,7 @@ def armarAlarma():
 
     if not todoCerrado():
         time.sleep(10)
-        GPIO.cleanup()
+        # GPIO.cleanup()
         return
 
     try:
@@ -79,9 +79,9 @@ def armarAlarma():
             time.sleep(0.2) # Tiempo cada cuando se verifica
     except KeyboardInterrupt:
         print("Programa Terminado")
-        GPIO.cleanup()
+        # GPIO.cleanup()
 
-    GPIO.cleanup()
+    # GPIO.cleanup()
 
 armarAlarma()
 
