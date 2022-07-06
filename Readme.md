@@ -58,6 +58,7 @@
 * Agregar script de inicio:
 * `sudo crontab -u pi -e`
 * adentro pegar `@reboot python /home/pi/pi-server/restart_pi-server.py >> /home/pi/pi-server/cron.log`
+* Tambien pegar `* * * * * curl http://0.0.0.0:44306/status_interno?hash=2fc76d29016f0eb3d9b041cfbe8c13db777973cc6bf6b2c9463727e090d51a1a`
 * Editar `/home/pi/Applications/telebit/bin/telebit-remote.js`
 
 # Magnéticos

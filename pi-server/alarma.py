@@ -70,7 +70,9 @@ def armarAlarma():
 
             if abertura_abierta:
                 print('Abertura abierta') 
-                enciendeSirena(4)
+                enciendeSirena(2)
+                time.sleep(30)
+                enciendeSirena(1800)
             else:
                 print('Todo cerrado')
             time.sleep(0.2) # Tiempo cada cuando se verifica
